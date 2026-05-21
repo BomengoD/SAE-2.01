@@ -1,5 +1,9 @@
 <Solution>
-  <Project Path="Librairie_Accès_BD/Librairie_Accès_BD.csproj" />
-  <Project Path="Librairie_Système/Librairie_Système.csproj" />
+  <Project Path="Librairie_Accès_BD/Librairie_Accès_BD.csproj">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
+  <Project Path="Librairie_Système/Librairie_Système.csproj">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
   <Project Path="SAE-2.01_Interface/SAE-2.01_Interface.csproj" />
 </Solution>
