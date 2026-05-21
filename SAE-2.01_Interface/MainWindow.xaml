@@ -5,8 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAE_2._01_Interface"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Menu d'accueil" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="135*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="3" Grid.Row="0">
+            <StackPanel>
+                <Image Source="assets/profil.png"/>
+            </StackPanel>
+        </Button>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="30">Puissance 4</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="20">Menu</TextBlock>
+
+        <Grid Grid.ColumnSpan="5" Grid.Row="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="LightGray" Margin="10,10,10,10"/>
+
+            <Button Grid.Column="1" Grid.Row="2">Jouer</Button>
+            
+            
+        </Grid>
 
     </Grid>
 </Window>
