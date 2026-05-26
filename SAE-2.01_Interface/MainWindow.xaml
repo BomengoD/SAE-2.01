@@ -23,14 +23,14 @@
 
         <Button Grid.Column="3" Grid.Row="0">
             <StackPanel>
-                <Image Source="assets/profil.png"/>
+                <Image/>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">Profil</TextBlock>
             </StackPanel>
         </Button>
 
         <Button Grid.Column="4" Grid.Row="0">
             <StackPanel>
-                <Image Source="assets/parametre.png"/>
+                <Image/>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">Paramètres</TextBlock>
             </StackPanel>
         </Button>
