@@ -13,39 +13,31 @@ namespace Librairie_Accès_BD
 //On utilise une méthode statique  
 /*
 sshHostName: l'IP du server SSH ou son nom d'hôte
-sshUserName: Le nom d'utilisateur pour se connecter au serveur SSH
-sshPassword: Le mot de passe de l'utilisateur pour se connecter au serveur SSH; si sshKeyFile est spécifié, cette option est ignorée
-sshKeyFile: Le chemin du fichier de clé privée SSH pour se connecter au serveur SSH; si sshPassword est spécifié, cette option est ignorée
-sshPassPhrase: La phrase de passe pour la clé privée SSH; si sshKeyFile n'est pas spécifié, cette option est ignorée
+sshUserName: L'id de l'étudiant pour se connecter au serveur SSH
+sshPassword: Le mot de passe de l'étudiant pour se connecter au serveur SSH
 sshPort: Le port du serveur SSH (par défaut 22)
-databaseServer: Le nom d'hôte ou l'adresse IP du serveur de base de données MySQL auquel se connecter via le tunnel SSH (par défaut "localhost")
+databaseServer: Le nom d'hôte ou l'adresse IP du serveur de base de données MySQL auquel se connecter via le tunnel SSH (par défaut "localhost") mais nous on va mettre l'adresse IP du serveur 240 là
 databasePort: Le port sur lequel le serveur MySQL écoute (par défaut 3306)
 */
 {
     public class ConfigurationSsh
     {
-        public static (SshClient SshClient, uint Port) ConnectSsh(string sshHostName, string sshUserName, string sshPassword = null,
-            string sshKeyFile = null, string sshPassPhrase = null, int sshPort = 22, string databaseServer = "localhost", int databasePort = 3306)
+        public static (SshClient SshClient,ForwardedPortLocal forwardedport, uint Port) ConnectSsh(string sshHostName, string sshUserName, string sshPassword, string databaseServer,int sshPort = 22, int databasePort = 3306)
         {
             // vérifier les arguments
             //la classe ArgumentException est utilisée pour signaler qu'une méthode a reçu un argument qui n'est pas valide.
             if (string.IsNullOrEmpty(sshHostName))
-                throw new ArgumentException($"{nameof(sshHostName)} must be specified.", nameof(sshHostName));
+                throw new ArgumentException($"{nameof(sshHostName)} doit être spécifié.", nameof(sshHostName));
             if (string.IsNullOrEmpty(sshUserName))
-                throw new ArgumentException($"{nameof(sshUserName)} must be specified.", nameof(sshUserName));
-            if (string.IsNullOrEmpty(sshPassword) && string.IsNullOrEmpty(sshKeyFile))
-                throw new ArgumentException($"One of {nameof(sshPassword)} and {nameof(sshKeyFile)} must be specified.");
+                throw new ArgumentException($"{nameof(sshUserName)} doit être spécifié.", nameof(sshUserName));
+            if (string.IsNullOrEmpty(sshPassword))
+                throw new ArgumentException($"{nameof(sshPassword)} doit être spécifié.", nameof(sshPassword));
             if (string.IsNullOrEmpty(databaseServer))
-                throw new ArgumentException($"{nameof(databaseServer)} must be specified.", nameof(databaseServer));
+                throw new ArgumentException($"{nameof(databaseServer)} doit être spécifié.", nameof(databaseServer));
 
             // définir les méthodes d'authentification à utiliser (dans l'ordre) en fonction de ce qui est spécifié pour la sécurité SSH
             //var nous permet de déclarer une variable sans spécifier explicitement son type, le compilateur le définira lors de la compilation en fonction de la valeur qui lui est assignée.
             var authenticationMethods = new List<AuthenticationMethod>();
-            if (!string.IsNullOrEmpty(sshKeyFile))
-            {
-                authenticationMethods.Add(new PrivateKeyAuthenticationMethod(sshUserName,
-                    new PrivateKeyFile(sshKeyFile, string.IsNullOrEmpty(sshPassPhrase) ? null : sshPassPhrase)));
-            }
             if (!string.IsNullOrEmpty(sshPassword))
             {
                 authenticationMethods.Add(new PasswordAuthenticationMethod(sshUserName, sshPassword));
@@ -65,7 +57,7 @@ databasePort: Le port sur lequel le serveur MySQL écoute (par défaut 3306)
             sshClient.AddForwardedPort(forwardedPort);
             forwardedPort.Start();
 
-            return (sshClient, forwardedPort.BoundPort);
+            return (sshClient, forwardedPort, forwardedPort.BoundPort);
         }
     }
 }
