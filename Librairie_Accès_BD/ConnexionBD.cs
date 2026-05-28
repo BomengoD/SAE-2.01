@@ -8,7 +8,19 @@ using System.Data.Common;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
-
+//Pour l'instant je gère la connexion grâce à un fichier secret : quand on fait clique droit sur le projet dans l'explorateur de solutions, y a une option pour gérer les données secrètes
+//et en cliquant dessus ça génère un fichier secrets.json où je met les infos de connexion dedans, le souci c'est que vous devez tous le faire pour l'instant, j'ai pas d'inspi pour mieux faire
+/*
+{
+  "Ssh:Server": "10.1.139.240",
+  "Ssh:UserID": "identifiantupjv",
+  "Ssh:Password": "mdpupjv",
+  "Database:Server": "10.1.139.236",
+  "Database:Name": "baseb3",
+  "Database:UserID": "b3",
+  "Database:Password": "FirstPromo1"
+}
+*/
 namespace Librairie_Accès_BD
 {
     public class ConnexionBD : IDisposable
