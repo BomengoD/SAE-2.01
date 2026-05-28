@@ -1,4 +1,4 @@
-﻿namespace Librairie_Accès_BD
+﻿namespace SAE_2._01_Systeme
 {
     public class Class1
     {
