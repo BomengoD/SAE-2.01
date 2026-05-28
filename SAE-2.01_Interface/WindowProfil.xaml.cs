@@ -36,19 +36,19 @@ namespace SAE_2._01_Interface
                 erreur = true;
             }
 
-            else if (TxtMDP.Text.Length < 6)
+            if (TxtMDP.Text.Length < 6)
             {
                 TxbErreurMDP.Text = "Le mot de passe doit contenir au moins 6 caractères.";
                 erreur = true;
             }
 
-            else if (TxtMDP.Text != TxtMDPConfirm.Text)
+            if (TxtMDP.Text != TxtMDPConfirm.Text)
             {
                 TxbErreurMDPConfirm.Text = "Les mots de passe ne correspondent pas.";
                 erreur = true;
             }
 
-            else if (!erreur)
+            if (!erreur)
             {
                 MessageBox.Show("Profil créé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
