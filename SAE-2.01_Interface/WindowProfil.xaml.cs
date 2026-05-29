@@ -22,6 +22,36 @@ namespace SAE_2._01_Interface
             InitializeComponent();
         }
 
+        bool ModeConnexion = false;
+        private void HyperlinkConnexion_Click(object sender, RoutedEventArgs e)
+        {
+            ModeConnexion = true;
+
+            TxtProfilTitre.Text = "Connexion";
+
+            BtnModifier.Visibility = Visibility.Collapsed;
+
+            StackPanelMDPConfirm.Visibility = Visibility.Collapsed;
+
+            TxbConnexion.Visibility = Visibility.Collapsed;
+            TxbInscription.Visibility = Visibility.Visible;
+        }
+
+        private void HyperlinkInscription_Click(object sender, RoutedEventArgs e)
+        {
+            ModeConnexion = false;
+
+            TxtProfilTitre.Text = "Création du Profil";
+
+            BtnModifier.Visibility = Visibility.Visible;
+
+            StackPanelMDPConfirm.Visibility = Visibility.Visible;
+
+
+            TxbConnexion.Visibility = Visibility.Visible;
+            TxbInscription.Visibility = Visibility.Collapsed;
+        }
+
         private void BtnValider_Click(object sender, RoutedEventArgs e)
         {
             TxbErreurProfilNom.Text = "";
@@ -32,17 +62,17 @@ namespace SAE_2._01_Interface
 
             if (string.IsNullOrWhiteSpace(TxtProfilNom.Text))
             {
-                TxbErreurProfilNom.Text = "Le nom est obligatoire.";
+                TxbErreurProfilNom.Text = "Veuillez saisir un nom.";
                 erreur = true;
             }
 
-            if (TxtMDP.Text.Length < 6)
+            if (PbMDP.Password.Length < 6)
             {
                 TxbErreurMDP.Text = "Le mot de passe doit contenir au moins 6 caractères.";
                 erreur = true;
             }
 
-            if (TxtMDP.Text != TxtMDPConfirm.Text)
+            if (!ModeConnexion && PbMDP.Password != PbMDPConfirm.Password)
             {
                 TxbErreurMDPConfirm.Text = "Les mots de passe ne correspondent pas.";
                 erreur = true;
@@ -50,7 +80,11 @@ namespace SAE_2._01_Interface
 
             if (!erreur)
             {
-                MessageBox.Show("Profil créé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (ModeConnexion)
+                    MessageBox.Show("Profil connecté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("Profil créé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 this.Close();
             }
         }
@@ -58,8 +92,8 @@ namespace SAE_2._01_Interface
         private void BtnReinitialiser_Click(object sender, RoutedEventArgs e)
         {
             TxtProfilNom.Text = "";
-            TxtMDP.Text = "";
-            TxtMDPConfirm.Text = "";
+            PbMDP.Password = "";
+            PbMDPConfirm.Password = "";
             TxbErreurProfilNom.Text = "";
             TxbErreurMDP.Text = "";
             TxbErreurMDPConfirm.Text = "";

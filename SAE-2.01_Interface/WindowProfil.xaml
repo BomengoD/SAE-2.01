@@ -15,6 +15,7 @@
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="5*"/>
+                    <RowDefinition Height="2*"/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
 
@@ -24,34 +25,44 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.ColumnSpan="3">Création du Profil</TextBlock>
+                <TextBlock x:Name="TxtProfilTitre" Grid.ColumnSpan="3" FontSize="20">Création du Profil</TextBlock>
 
                 <StackPanel Grid.Column="1" Grid.Row="1">
                     <Image Source="/assets/profil.png" Height="75"/>
-                    <Button Name="BtnModifier">Modifier</Button>
+                    <Button x:Name="BtnModifier">Modifier</Button>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="2">
-                    <TextBlock Name="TxbProfilNom">Nom</TextBlock>
-                    <TextBox Name="TxtProfilNom"></TextBox>
-                    <TextBlock Name="TxbErreurProfilNom" Foreground="Red"></TextBlock>
+                    <TextBlock x:Name="TxbProfilNom">Nom</TextBlock>
+                    <TextBox x:Name="TxtProfilNom"></TextBox>
+                    <TextBlock x:Name="TxbErreurProfilNom" Foreground="Red"></TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="3">
-                    <TextBlock Name="TxbMDP">Mot de passe</TextBlock>
-                    <TextBox Name="TxtMDP"></TextBox>
-                    <TextBlock Name="TxbErreurMDP" Foreground="Red"></TextBlock>
+                    <TextBlock x:Name="TxbMDP">Mot de passe</TextBlock>
+                    <PasswordBox x:Name="PbMDP"/>
+                    <TextBlock x:Name="TxbErreurMDP" Foreground="Red"></TextBlock>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Grid.Row="4">
-                    <TextBlock Name="TxbMDPConfirm">Confirmer le mot de passe</TextBlock>
-                    <TextBox Name="TxtMDPConfirm"></TextBox>
-                    <TextBlock Name="TxbErreurMDPConfirm" Foreground="Red"></TextBlock>
+                <StackPanel x:Name="StackPanelMDPConfirm" Grid.Column="1" Grid.Row="4">
+                    <TextBlock x:Name="TxbMDPConfirm">Confirmer le mot de passe</TextBlock>
+                    <PasswordBox x:Name="PbMDPConfirm"/>
+                    <TextBlock x:Name="TxbErreurMDPConfirm" Foreground="Red"></TextBlock>
                 </StackPanel>
+                
+                <TextBlock x:Name="TxbConnexion" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center">
+                    <Run Text="Déjà un compte ? "/>
+                    <Hyperlink Click="HyperlinkConnexion_Click">Se connecter</Hyperlink>
+                </TextBlock>
 
-                <Button Name="BtnReinitialiser" Grid.Row="5" Click="BtnReinitialiser_Click">Réinitialiser</Button>
-                <Button Name="BtnValider" Grid.Column="2" Grid.Row="5" Click="BtnValider_Click">Valider</Button>
-            
+                <TextBlock x:Name="TxbInscription" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" Visibility="Collapsed">
+                    <Run Text="Pas de compte ? "/>
+                    <Hyperlink Click="HyperlinkInscription_Click">S'inscrire</Hyperlink>
+                </TextBlock>
+                
+                <Button x:Name="BtnReinitialiser" Grid.Row="6" Click="BtnReinitialiser_Click">Réinitialiser</Button>
+                <Button x:Name="BtnValider" Grid.Column="2" Grid.Row="6" Click="BtnValider_Click">Valider</Button>
+
             </Grid>
         </ScrollViewer>
     </Grid>
