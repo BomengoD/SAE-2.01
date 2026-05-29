@@ -9,4 +9,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Librairie_Accès_BD\Librairie_Accès_BD.csproj" />
+    <ProjectReference Include="..\Librairie_Système\Librairie_Système.csproj" />
+  </ItemGroup>
+
 </Project>

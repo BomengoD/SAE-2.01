@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Test_BD": {
+      "commandName": "Project",
+      "sqlDebugging": true
+    }
+  }
+}
