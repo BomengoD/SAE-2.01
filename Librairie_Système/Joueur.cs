@@ -6,6 +6,11 @@ namespace Librairie_Système
 {
     public class Joueur
     {
+        private readonly ConnexionBD bd;
 
+        public Joueur(ConnexionBD bd)
+        {
+            this.bd = bd;
+        }
     }
 }
