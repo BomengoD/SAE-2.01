@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Text;
 namespace Librairie_Accès_BD.ModelesTables
 {
-    public class Joueur : INotifyPropertyChanged
+    public class Joueur
     {
         private int _numjoueur;
         private string _nomjoueur;
@@ -91,7 +91,6 @@ namespace Librairie_Accès_BD.ModelesTables
 
 
 
-        public event PropertyChangedEventHandler? PropertyChanged;
     }
 
     
