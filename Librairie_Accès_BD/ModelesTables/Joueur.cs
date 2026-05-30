@@ -3,6 +3,7 @@ using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Text;
 namespace Librairie_Accès_BD.ModelesTables
 {
@@ -13,58 +14,81 @@ namespace Librairie_Accès_BD.ModelesTables
         private string _prenomjoueur;
         private string _pseudojoueur;
         private string _mdpjoueur;
-        private string _datenaissance;
+        private DateTime _datenaissance;
         private string _typejoueur;
+        private int? _numNationalite;
+        private int? _numEquipe;
+        private int? _numConfig;
 
-        public int numjoueur
+        public Joueur(string nomjoueur, string prenomjoueur, string pseudojoueur, string mdpjoueur, DateTime datenaissance, string typejoueur, int? numNationalite, int? numEquipe, int? numConfig)
         {
-            get { return _numjoueur; }
-            set { _numjoueur = value; }
+            this._nomjoueur = nomjoueur;
+            this._prenomjoueur = prenomjoueur;
+            this._pseudojoueur = pseudojoueur;
+            this._mdpjoueur = mdpjoueur;
+            this._datenaissance = datenaissance;
+            this._typejoueur = typejoueur;
+            this._numNationalite = numNationalite;
+            this._numEquipe = numEquipe;
+            this._numConfig = numConfig;
         }
-        public string nomjoueur
+        public int NumJoueur
         {
-            get { return _nomjoueur; }
-            set { _nomjoueur = value; }
+            get { return this._numjoueur; }
+            set { this._numjoueur = value; }
         }
-
-        public string prenomjoueur
+        public string NomJoueur
         {
-            get { return _prenomjoueur; }
-            set { _prenomjoueur = value; }
-        }
-        public string pseudoJoueur
-        {
-            get { return _pseudojoueur; }
-            set { _pseudojoueur = value; }
-        }
-        public string mdpJoueur
-        {
-            get { return _mdpjoueur; }
-            set { _mdpjoueur = value; }
-        }
-        public string dateNaissance
-        {
-            get { return _datenaissance; }
-            set { _datenaissance = value; }
+            get { return this._nomjoueur; }
+            set { this._nomjoueur = value; }
         }
 
-        public string typeJoueur
+        public string PrenomJoueur
         {
-            get { return _typejoueur; }
-            set { _typejoueur = value; 
-
-            
-            }
+            get { return this._prenomjoueur; }
+            set { this._prenomjoueur = value; }
         }
-        public bool identifiants_valide(string pseudo, string mdp)
+        public string PseudoJoueur
         {
-            // Ici, vous pouvez implémenter la logique pour vérifier les identifiants du joueur
-            // Par exemple, vous pouvez interroger la base de données pour vérifier si le pseudo et le mot de passe correspondent à un joueur existant
-            // Retournez true si les identifiants sont valides, sinon false
-            return pseudo == pseudoJoueur && mdp == mdpJoueur;
+            get { return this._pseudojoueur; }
+            set { this._pseudojoueur = value; }
+        }
+        public string MdpJoueur
+        {
+            get { return this._mdpjoueur; }
+            set { this._mdpjoueur = value; }
+        }
+        public DateTime DateNaissance
+        {
+            get { return this._datenaissance; }
+            set { this._datenaissance = value; }
         }
 
-        
+        public string TypeJoueur
+        {
+            get { return this._typejoueur; }
+            set { this._typejoueur = value;}
+        }
+
+        public int? NumNationalite
+        {
+            get { return this._numNationalite; }
+            set { this._numNationalite = value; }
+        }
+
+        public int? NumEquipe
+        {
+            get { return this._numEquipe; }
+            set { this._numEquipe = value; }
+        }
+
+        public int? NumConfig
+        {
+            get { return this._numConfig; }
+            set { this._numConfig = value; }
+        }
+
+
 
 
         public event PropertyChangedEventHandler? PropertyChanged;
