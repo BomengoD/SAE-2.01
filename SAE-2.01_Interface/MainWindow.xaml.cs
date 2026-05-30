@@ -20,5 +20,11 @@ namespace SAE_2._01_Interface
         {
             InitializeComponent();
         }
+
+        private void PageProfil_Click(object sender, RoutedEventArgs e)
+        {
+            WindowProfil windowProfil = new WindowProfil();
+            windowProfil.Show();
+        }
     }
 }

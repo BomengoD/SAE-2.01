@@ -10,8 +10,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\parametre.png" />
+    <None Remove="assets\profil.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Librairie_Accès_BD\Librairie_Accès_BD.csproj" />
     <ProjectReference Include="..\Librairie_Système\Librairie_Système.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\parametre.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\profil.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
