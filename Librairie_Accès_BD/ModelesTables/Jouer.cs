@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Librairie_Système
+namespace Librairie_Accès_BD.ModelesTables
 {
-    internal class TableConfiguration
+    internal class Jouer
     {
     }
 }
