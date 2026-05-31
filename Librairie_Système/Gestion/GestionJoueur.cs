@@ -15,7 +15,7 @@ namespace Librairie_Système.Gestion
         {
             this._table = new TableJoueur(co);
         }
-        public async Task<bool> SeConnecter(string pseudo, string mdp)
+        public async Task SeConnecter(string pseudo, string mdp)
         {
             if (string.IsNullOrWhiteSpace(pseudo) || string.IsNullOrWhiteSpace(mdp))throw new Exception("Pseudo et mot de passe sont requis");
 
@@ -23,7 +23,7 @@ namespace Librairie_Système.Gestion
             if (joueur.MdpJoueur != mdp) throw new Exception("Mot de passe incorrect");
 
             JoueurCo = joueur;
-            return true;
+            
 
         }
 
