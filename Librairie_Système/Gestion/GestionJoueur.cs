@@ -9,7 +9,7 @@ namespace Librairie_Système.Gestion
     public class GestionJoueur
     {
         private readonly TableJoueur _table;
-        public Joueur? JoueurCo { get; private set; }
+        public JoueurBD? JoueurCo { get; private set; }
 
         public GestionJoueur(ConnexionBD co)
         {
@@ -43,7 +43,7 @@ namespace Librairie_Système.Gestion
             var existant = await _table.ObtenirJoueur(pseudo);
             if (existant != null) throw new Exception("Pseudo déjà utilisé");
 
-            var joueur = new Joueur(nom, prenom, pseudo, mdp, dateNaissance, typeJoueur, numNationalite, numEquipe, numConfig);
+            var joueur = new JoueurBD(nom, prenom, pseudo, mdp, dateNaissance, typeJoueur, numNationalite, numEquipe, numConfig);
 
             await _table.AjouterJoueur(joueur);
         }

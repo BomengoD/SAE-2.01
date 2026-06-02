@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Text;
 namespace Librairie_Accès_BD.ModelesTables
 {
-    public class Joueur
+    public class JoueurBD
     {
         private int _numjoueur;
         private string _nomjoueur;
@@ -20,7 +20,7 @@ namespace Librairie_Accès_BD.ModelesTables
         private int? _numEquipe;
         private int? _numConfig;
 
-        public Joueur(string nomjoueur, string prenomjoueur, string pseudojoueur, string mdpjoueur, DateTime datenaissance, string typejoueur, int? numNationalite, int? numEquipe, int? numConfig)
+        public JoueurBD(string nomjoueur, string prenomjoueur, string pseudojoueur, string mdpjoueur, DateTime datenaissance, string typejoueur, int? numNationalite, int? numEquipe, int? numConfig)
         {
             this._nomjoueur = nomjoueur;
             this._prenomjoueur = prenomjoueur;

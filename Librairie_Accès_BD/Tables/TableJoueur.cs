@@ -16,7 +16,7 @@ namespace Librairie_Accès_BD.Tables
         }
 
 
-        public async Task AjouterJoueur(Joueur joueur)
+        public async Task AjouterJoueur(JoueurBD joueur)
         {
             string sql = "INSERT INTO Joueur (NomJoueur, PrenomJoueur, PseudoJoueur, MdpJoueur, DateNaissance, TypeJoueur, NumNationalite, NumEquipe, NumConfig) VALUES (@nom, @prenom, @pseudo, @mdp, @date_naissance, @type,@nation,@equipe,@config)";
             using var cmd = new MySqlCommand(sql, _co.Connection);
@@ -32,7 +32,7 @@ namespace Librairie_Accès_BD.Tables
 
             await cmd.ExecuteNonQueryAsync();
         }
-        public async Task<Joueur?> ObtenirJoueur(int NumJoueur)
+        public async Task<JoueurBD?> ObtenirJoueur(int NumJoueur)
         {
             string sql = "SELECT * FROM Joueur WHERE NumJoueur = @num";
             using var cmd = new MySqlCommand(sql, _co.Connection);
@@ -48,35 +48,28 @@ namespace Librairie_Accès_BD.Tables
             }
         }
 
-        public async Task<Joueur?> ObtenirJoueur(string pseudo)
+        public async Task<JoueurBD?> ObtenirJoueur(string pseudo)
         {
             string sql = "SELECT * FROM Joueur WHERE PseudoJoueur = @pseudo";
             using var cmd = new MySqlCommand(sql, _co.Connection);
             cmd.Parameters.AddWithValue("@pseudo", pseudo);
             using var lecteur = await cmd.ExecuteReaderAsync();
-            if (await lecteur.ReadAsync())
-            {
-                return Constructeur(lecteur);
-            }
-            else
-            {
-                return null;
-            }
+            return lecteur.Read() ? Constructeur(lecteur) : null; 
         }
 
-        public async Task<List<Joueur>> ObtenirTousLesJoueurs()
+        public async Task<List<JoueurBD>> ObtenirTousLesJoueurs()
         {
             string sql = "SELECT * FROM Joueur";
             using var cmd = new MySqlCommand(sql, _co.Connection);
             using var lecteur = await cmd.ExecuteReaderAsync();
-            List<Joueur> joueurs = new List<Joueur>();
+            List<JoueurBD> joueurs = new List<JoueurBD>();
             while (await lecteur.ReadAsync())
             {
                 joueurs.Add(Constructeur(lecteur));
             }
             return joueurs;
         } 
-        public async Task ModifierJoueur(Joueur joueur)
+        public async Task ModifierJoueur(JoueurBD joueur)
         {
             string sql = "UPDATE Joueur SET NomJoueur = @nom, PrenomJoueur = @prenom, PseudoJoueur = @pseudo, MdpJoueur = @mdp, DateNaissance = @date_naissance, TypeJoueur = @type, NumNationalite = @nation, NumEquipe = @equipe, NumConfig = @config WHERE NumJoueur = @num";
             using var cmd = new MySqlCommand(sql, _co.Connection);
@@ -100,9 +93,9 @@ namespace Librairie_Accès_BD.Tables
             await cmd.ExecuteNonQueryAsync();
         }
 
-        private static Joueur Constructeur(MySqlDataReader lecteur)
+        private static JoueurBD Constructeur(MySqlDataReader lecteur)
         {
-            return new Joueur(
+            return new JoueurBD(
                 lecteur.GetString("NomJoueur"),
                 lecteur.GetString("PrenomJoueur"),
                 lecteur.GetString("PseudoJoueur"),
