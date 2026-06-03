@@ -14,7 +14,7 @@ namespace Librairie_Accès_BD.Tables
         {
             _co = co;
         }
-        public async Task<List<PartieBD>> ObtenirTousLesParties()
+        public async Task<List<PartieBD>> ObtenirToutesLesParties()
         {
             var result = new List<PartieBD>();
             using var cmd = new MySqlCommand("SELECT * FROM PARTIE", _co.Connection);
