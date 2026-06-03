@@ -18,7 +18,7 @@ namespace Librairie_Accès_BD.Tables
 
         public async Task AjouterJoueur(JoueurBD joueur)
         {
-            string sql = "INSERT INTO Joueur (NomJoueur, PrenomJoueur, PseudoJoueur, MdpJoueur, DateNaissance, TypeJoueur, NumNationalite, NumEquipe, NumConfig) VALUES (@nom, @prenom, @pseudo, @mdp, @date_naissance, @type,@nation,@equipe,@config)";
+            string sql = "INSERT INTO JOUEUR (NomJoueur, PrenomJoueur, PseudoJoueur, MdpJoueur, DateNaissance, TypeJoueur, NumNationalite, NumEquipe, NumConfig) VALUES (@nom, @prenom, @pseudo, @mdp, @date_naissance, @type,@nation,@equipe,@config)";
             using var cmd = new MySqlCommand(sql, _co.Connection);
             cmd.Parameters.AddWithValue("@nom", joueur.NomJoueur);
             cmd.Parameters.AddWithValue("@prenom", joueur.PrenomJoueur);
@@ -34,7 +34,7 @@ namespace Librairie_Accès_BD.Tables
         }
         public async Task<JoueurBD?> ObtenirJoueur(int NumJoueur)
         {
-            string sql = "SELECT * FROM Joueur WHERE NumJoueur = @num";
+            string sql = "SELECT * FROM JOUEUR WHERE NumJoueur = @num";
             using var cmd = new MySqlCommand(sql, _co.Connection);
             cmd.Parameters.AddWithValue("@num", NumJoueur);
             using var lecteur = await cmd.ExecuteReaderAsync();
@@ -50,7 +50,7 @@ namespace Librairie_Accès_BD.Tables
 
         public async Task<JoueurBD?> ObtenirJoueur(string pseudo)
         {
-            string sql = "SELECT * FROM Joueur WHERE PseudoJoueur = @pseudo";
+            string sql = "SELECT * FROM JOUEUR WHERE PseudoJoueur = @pseudo";
             using var cmd = new MySqlCommand(sql, _co.Connection);
             cmd.Parameters.AddWithValue("@pseudo", pseudo);
             using var lecteur = await cmd.ExecuteReaderAsync();
@@ -59,7 +59,7 @@ namespace Librairie_Accès_BD.Tables
 
         public async Task<List<JoueurBD>> ObtenirTousLesJoueurs()
         {
-            string sql = "SELECT * FROM Joueur";
+            string sql = "SELECT * FROM JOUEUR";
             using var cmd = new MySqlCommand(sql, _co.Connection);
             using var lecteur = await cmd.ExecuteReaderAsync();
             List<JoueurBD> joueurs = new List<JoueurBD>();
@@ -71,7 +71,7 @@ namespace Librairie_Accès_BD.Tables
         } 
         public async Task ModifierJoueur(JoueurBD joueur)
         {
-            string sql = "UPDATE Joueur SET NomJoueur = @nom, PrenomJoueur = @prenom, PseudoJoueur = @pseudo, MdpJoueur = @mdp, DateNaissance = @date_naissance, TypeJoueur = @type, NumNationalite = @nation, NumEquipe = @equipe, NumConfig = @config WHERE NumJoueur = @num";
+            string sql = "UPDATE JOUEUR SET NomJoueur = @nom, PrenomJoueur = @prenom, PseudoJoueur = @pseudo, MdpJoueur = @mdp, DateNaissance = @date_naissance, TypeJoueur = @type, NumNationalite = @nation, NumEquipe = @equipe, NumConfig = @config WHERE NumJoueur = @num";
             using var cmd = new MySqlCommand(sql, _co.Connection);
             cmd.Parameters.AddWithValue("@num", joueur.NumJoueur);
             cmd.Parameters.AddWithValue("@nom", joueur.NomJoueur);
@@ -87,7 +87,7 @@ namespace Librairie_Accès_BD.Tables
         }
         public async Task SupprimeJoueur(int NumJoueur)
         {
-            string sql = "DELETE FROM Joueur WHERE NumJoueur = @num";
+            string sql = "DELETE FROM JOUEUR WHERE NumJoueur = @num";
             using var cmd = new MySqlCommand(sql, _co.Connection);
             cmd.Parameters.AddWithValue("@num", NumJoueur);
             await cmd.ExecuteNonQueryAsync();

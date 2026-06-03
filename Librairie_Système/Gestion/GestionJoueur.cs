@@ -17,7 +17,6 @@ namespace Librairie_Système.Gestion
         }
         public async Task SeConnecter(string pseudo, string mdp)
         {
-            if (string.IsNullOrWhiteSpace(pseudo) || string.IsNullOrWhiteSpace(mdp))throw new Exception("Pseudo et mot de passe sont requis");
 
             var joueur = await _table.ObtenirJoueur(pseudo) ?? throw new Exception("Pseudo introuvable");
             if (joueur.MdpJoueur != mdp) throw new Exception("Mot de passe incorrect");
