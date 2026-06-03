@@ -96,12 +96,12 @@ namespace Librairie_Accès_BD.Tables
         private static JoueurBD Constructeur(MySqlDataReader lecteur)
         {
             return new JoueurBD(
-                lecteur.GetString("NomJoueur"),
-                lecteur.GetString("PrenomJoueur"),
                 lecteur.GetString("PseudoJoueur"),
                 lecteur.GetString("MdpJoueur"),
-                lecteur.GetDateTime("DateNaissance"),
                 lecteur.GetString("TypeJoueur"),
+                lecteur.IsDBNull(lecteur.GetOrdinal("DateNaissance")) ? null : lecteur.GetDateTime("DateNaissance"),
+                lecteur.IsDBNull(lecteur.GetOrdinal("NomJoueur")) ? null : lecteur.GetString("NomJoueur"),
+                lecteur.IsDBNull(lecteur.GetOrdinal("PrenomJoueur")) ? null : lecteur.GetString("PrenomJoueur"),
                 lecteur.IsDBNull(lecteur.GetOrdinal("NumNationalite")) ? null : lecteur.GetInt32("NumNationalite"),
                 lecteur.IsDBNull(lecteur.GetOrdinal("NumEquipe")) ? null : lecteur.GetInt32("NumEquipe"),
                 lecteur.IsDBNull(lecteur.GetOrdinal("NumConfig")) ? null : lecteur.GetInt32("NumConfig")

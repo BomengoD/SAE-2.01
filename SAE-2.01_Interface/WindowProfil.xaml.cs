@@ -92,7 +92,7 @@ namespace SAE_2._01_Interface
                     try
                     {
                         await app.GestionJoueur.SeConnecter(TxtProfilNom.Text, PbMDP.Password);
-                        MessageBox.Show("Profil connecté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show($"Bienvenue {app.GestionJoueur.JoueurCo?.PseudoJoueur}, Profil connecté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex)
                     {
@@ -101,7 +101,16 @@ namespace SAE_2._01_Interface
                     }
                 
                 else
-                    MessageBox.Show("Profil créé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                    try
+                    {
+                        await app.GestionJoueur.Inscrire(TxtProfilNom.Text, PbMDP.Password);
+                        MessageBox.Show("Profil créé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erreur lors de l'inscription : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
 
                 this.Close();
             }

@@ -10,17 +10,17 @@ namespace Librairie_Accès_BD.ModelesTables
     public class JoueurBD
     {
         private int _numjoueur;
-        private string _nomjoueur;
-        private string _prenomjoueur;
+        private string? _nomjoueur;
+        private string? _prenomjoueur;
         private string _pseudojoueur;
         private string _mdpjoueur;
-        private DateTime _datenaissance;
+        private DateTime? _datenaissance;
         private string _typejoueur;
         private int? _numNationalite;
         private int? _numEquipe;
         private int? _numConfig;
 
-        public JoueurBD(string nomjoueur, string prenomjoueur, string pseudojoueur, string mdpjoueur, DateTime datenaissance, string typejoueur, int? numNationalite, int? numEquipe, int? numConfig)
+        public JoueurBD(string pseudojoueur, string mdpjoueur, string typejoueur, DateTime? datenaissance=null, string? nomjoueur=null, string? prenomjoueur=null, int? numNationalite=null, int? numEquipe=null, int? numConfig=null)
         {
             this._nomjoueur = nomjoueur;
             this._prenomjoueur = prenomjoueur;
@@ -37,13 +37,13 @@ namespace Librairie_Accès_BD.ModelesTables
             get { return this._numjoueur; }
             set { this._numjoueur = value; }
         }
-        public string NomJoueur
+        public string? NomJoueur
         {
             get { return this._nomjoueur; }
             set { this._nomjoueur = value; }
         }
 
-        public string PrenomJoueur
+        public string? PrenomJoueur
         {
             get { return this._prenomjoueur; }
             set { this._prenomjoueur = value; }
@@ -58,7 +58,7 @@ namespace Librairie_Accès_BD.ModelesTables
             get { return this._mdpjoueur; }
             set { this._mdpjoueur = value; }
         }
-        public DateTime DateNaissance
+        public DateTime? DateNaissance
         {
             get { return this._datenaissance; }
             set { this._datenaissance = value; }

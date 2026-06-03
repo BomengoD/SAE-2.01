@@ -31,9 +31,9 @@ namespace Librairie_Système.Gestion
             JoueurCo = null;
         }
 
-        public async Task Inscrire(string nom, string prenom, string pseudo, string mdp, DateTime dateNaissance, string typeJoueur, int? numNationalite, int? numEquipe, int? numConfig)
+        public async Task Inscrire(string pseudo, string mdp, string typeJoueur = "Humain", DateTime? dateNaissance= null,  string? nom = null, string? prenom = null, int? numNationalite = null, int? numEquipe= null, int? numConfig= null)
         {
-            if (string.IsNullOrWhiteSpace(nom) || string.IsNullOrWhiteSpace(prenom) || string.IsNullOrWhiteSpace(pseudo) || string.IsNullOrWhiteSpace(mdp)) throw new Exception("Ces champs sont requis");
+            if (string.IsNullOrWhiteSpace(pseudo) || string.IsNullOrWhiteSpace(mdp)) throw new Exception("Ces champs sont requis");
             if (dateNaissance >= DateTime.Today) throw new Exception("Date de naissance invalide");
             if (numNationalite.HasValue && numNationalite < 1) throw new Exception("Numéro de nationalité invalide");
             if (numEquipe.HasValue && numEquipe < 1) throw new Exception("Numéro d'équipe invalide");
@@ -42,7 +42,7 @@ namespace Librairie_Système.Gestion
             var existant = await _table.ObtenirJoueur(pseudo);
             if (existant != null) throw new Exception("Pseudo déjà utilisé");
 
-            var joueur = new JoueurBD(nom, prenom, pseudo, mdp, dateNaissance, typeJoueur, numNationalite, numEquipe, numConfig);
+            var joueur = new JoueurBD(pseudo, mdp, typeJoueur, dateNaissance, nom, prenom, numNationalite, numEquipe, numConfig);
 
             await _table.AjouterJoueur(joueur);
         }
