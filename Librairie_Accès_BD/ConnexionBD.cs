@@ -23,7 +23,7 @@ using System.Text;
 */
 namespace Librairie_Accès_BD
 {
-    public class ConnexionBD : IDisposable
+    public class ConnexionBD : IAsyncDisposable
     {
         //Il faut les infos SSH donc les infos d'un étudiant connecté au VPN de l'université pour que ça fonctionne
         private readonly string sshServer;
@@ -68,24 +68,24 @@ namespace Librairie_Accès_BD
                 Password = databasePassword,
             };
 
-            connection = new MySqlConnection(NotreCo.ConnectionString);
+             connection = new MySqlConnection(NotreCo.ConnectionString);
         }
-        public void OuvrirConnexion()
+        public async Task OuvrirConnexion()
         {
             //On ouvre la co
-            connection?.Open();
+             await connection!.OpenAsync();
 
         }
 
-        public void FermerConnexion()
+        public async Task FermerConnexion()
         {
             // Ferme la connexion à la base de données ou serveur sql si vous préférez mais on peut la re ouvrir après
-            connection?.Close();
+            await connection!.CloseAsync();
         }
-        public void Dispose()
+        public async ValueTask DisposeAsync()
         {
             // Ferme la connexion au serveur SSH et là faut tout recommencer pour se reconnecter
-            connection?.Dispose();
+            await connection!.DisposeAsync();
             forwardedPort?.Stop();
             forwardedPort?.Dispose();
             Client?.Disconnect();

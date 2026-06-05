@@ -3,17 +3,17 @@ using MySqlConnector;
 try
 {
     Console.WriteLine("Connexion en cours...");
-    using var bd = new ConnexionBD();
+    await using var bd = new ConnexionBD();
     bd.OuvrirConnexion();
 
-    using var cmd = new MySqlCommand("SHOW TABLES;", bd.Connection);
+    using var cmd = new MySqlCommand("SELECT * FROM JOUEUR;", bd.Connection);
     using var reader = cmd.ExecuteReader();
 
     Console.WriteLine("Tables trouvées :");
     while (reader.Read())
-        Console.WriteLine($"  - {reader.GetString(0)}");
+        Console.WriteLine($"  - {reader["Typejoueur"]}");
 }
 catch (Exception ex)
 {
     Console.WriteLine($"Erreur : {ex.Message}");
-}
+} 

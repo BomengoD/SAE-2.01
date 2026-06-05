@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Librairie_Système;
 
 namespace SAE_2._01_Interface
 {
@@ -52,7 +53,7 @@ namespace SAE_2._01_Interface
             TxbInscription.Visibility = Visibility.Collapsed;
         }
 
-        private void BtnValider_Click(object sender, RoutedEventArgs e)
+        private async void BtnValider_Click(object sender, RoutedEventArgs e)
         {
             TxbErreurProfilNom.Text = "";
             TxbErreurMDP.Text = "";
@@ -80,10 +81,36 @@ namespace SAE_2._01_Interface
 
             if (!erreur)
             {
+                var app = Application.Current as App;
+                if (app == null || app.GestionJoueur == null)
+                {
+                    MessageBox.Show("Erreur interne : gestionnaire de joueurs non initialisé.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 if (ModeConnexion)
-                    MessageBox.Show("Profil connecté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                    try
+                    {
+                        await app.GestionJoueur.SeConnecter(TxtProfilNom.Text, PbMDP.Password);
+                        MessageBox.Show($"Bienvenue {app.GestionJoueur.JoueurCo?.PseudoJoueur}, Profil connecté avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erreur lors de la connexion : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                
                 else
-                    MessageBox.Show("Profil créé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                    try
+                    {
+                        await app.GestionJoueur.Inscrire(TxtProfilNom.Text, PbMDP.Password);
+                        MessageBox.Show("Profil créé avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erreur lors de l'inscription : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
 
                 this.Close();
             }
