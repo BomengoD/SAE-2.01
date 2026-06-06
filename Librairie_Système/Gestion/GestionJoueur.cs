@@ -22,7 +22,7 @@ namespace Librairie_Système.Gestion
             if (joueur.MdpJoueur != mdp) throw new Exception("Mot de passe incorrect");
 
             JoueurCo = joueur;
-            
+
 
         }
 
@@ -31,7 +31,7 @@ namespace Librairie_Système.Gestion
             JoueurCo = null;
         }
 
-        public async Task Inscrire(string pseudo, string mdp, string typeJoueur = "Humain", DateTime? dateNaissance= null,  string? nom = null, string? prenom = null, int? numNationalite = null, int? numEquipe= null, int? numConfig= null)
+        public async Task Inscrire(string pseudo, string mdp, string typeJoueur = "Humain", DateTime? dateNaissance = null, string? nom = null, string? prenom = null, int? numNationalite = null, int? numEquipe = null, int? numConfig = null)
         {
             if (string.IsNullOrWhiteSpace(pseudo) || string.IsNullOrWhiteSpace(mdp)) throw new Exception("Ces champs sont requis");
             if (dateNaissance >= DateTime.Today) throw new Exception("Date de naissance invalide");
@@ -45,6 +45,40 @@ namespace Librairie_Système.Gestion
             var joueur = new JoueurBD(pseudo, mdp, typeJoueur, dateNaissance, nom, prenom, numNationalite, numEquipe, numConfig);
 
             await _table.AjouterJoueur(joueur);
+        }
+
+        public async Task Modifier(string pseudo, string? mdp, string? typeJoueur = "Humain", DateTime? dateNaissance = null, string? nom = null, string? prenom = null, int? numNationalite = null, int? numEquipe = null, int? numConfig = null)
+        {
+            if(JoueurCo == null)
+                throw new Exception("Aucun joueur connecté");
+            if (dateNaissance >= DateTime.Today)
+                throw new Exception("Date de naissance invalide");
+            if (numNationalite.HasValue && numNationalite < 1)
+                throw new Exception("Numéro de nationalité invalide");
+            if (numEquipe.HasValue && numEquipe < 1)
+                throw new Exception("Numéro d'équipe invalide");
+            if (numConfig.HasValue && numConfig < 1)
+                throw new Exception("Numéro de configuration invalide");
+            var existant = await _table.ObtenirJoueur(pseudo);
+            if (existant != null && existant.NumJoueur != JoueurCo.NumJoueur) throw new Exception("Pseudo déjà utilisé");
+            JoueurCo.PseudoJoueur = pseudo;
+            if (!string.IsNullOrWhiteSpace(mdp))
+                JoueurCo.MdpJoueur = mdp;
+            if (!string.IsNullOrWhiteSpace(typeJoueur))
+                JoueurCo.TypeJoueur = typeJoueur;
+            if (dateNaissance.HasValue)
+                JoueurCo.DateNaissance = dateNaissance.Value;
+            if (!string.IsNullOrWhiteSpace(nom))
+                JoueurCo.NomJoueur = nom;
+            if (!string.IsNullOrWhiteSpace(prenom))
+                JoueurCo.PrenomJoueur = prenom;
+            if (numNationalite.HasValue)
+                JoueurCo.NumNationalite = numNationalite.Value;
+            if (numEquipe.HasValue)
+                JoueurCo.NumEquipe = numEquipe.Value;
+            if (numConfig.HasValue)
+                JoueurCo.NumConfig = numConfig.Value;
+            await _table.ModifierJoueur(JoueurCo);
         }
     }
 }

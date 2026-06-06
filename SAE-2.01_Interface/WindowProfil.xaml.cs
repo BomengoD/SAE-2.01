@@ -21,9 +21,40 @@ namespace SAE_2._01_Interface
         public WindowProfil()
         {
             InitializeComponent();
+            ActualiserAffichage();
         }
 
         bool ModeConnexion = false;
+        private void ActualiserAffichage()
+        {
+            var app = (App)Application.Current;
+
+            if (app.GestionJoueur?.JoueurCo != null)
+            {
+                TxtProfilTitre.Text = "Modifier votre profil";
+
+                StackPanelMDPConfirm.Visibility = Visibility.Collapsed;
+
+                TxbConnexion.Visibility = Visibility.Collapsed;
+
+                BtnReinitialiser.Visibility = Visibility.Collapsed;
+                BtnDeconnexion.Visibility = Visibility.Visible;
+                BtnSuccès.Visibility = Visibility.Visible;
+
+            }
+            else if(StackPanelMDP.Visibility == Visibility.Collapsed)
+            {
+                TxtProfilTitre.Text = "Création du Profil";
+                BtnModifier.Visibility = Visibility.Visible;
+                StackPanelProfilNom.Visibility = Visibility.Visible;
+                StackPanelMDP.Visibility = Visibility.Visible;
+
+                StackPanelMDPConfirm.Visibility = Visibility.Visible;
+                BtnReinitialiser.Visibility = Visibility.Visible;
+                TxbConnexion.Visibility = Visibility.Visible;
+            }
+            
+        }
         private void HyperlinkConnexion_Click(object sender, RoutedEventArgs e)
         {
             ModeConnexion = true;
@@ -85,7 +116,6 @@ namespace SAE_2._01_Interface
                 if (app == null || app.GestionJoueur == null)
                 {
                     MessageBox.Show("Erreur interne : gestionnaire de joueurs non initialisé.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
                 }
 
                 if (ModeConnexion)
@@ -97,9 +127,18 @@ namespace SAE_2._01_Interface
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Erreur lors de la connexion : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
                     }
-                
+                else if (app.GestionJoueur.JoueurCo != null)
+                    try
+                    {
+                        await app.GestionJoueur.Modifier(TxtProfilNom.Text, PbMDP.Password);
+                        MessageBox.Show("Profil modifié avec succès.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erreur lors de la modification du profil : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 else
                     try
                     {
@@ -109,9 +148,9 @@ namespace SAE_2._01_Interface
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Erreur lors de l'inscription : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
                     }
 
+                ActualiserAffichage();
                 this.Close();
             }
         }
@@ -124,6 +163,22 @@ namespace SAE_2._01_Interface
             TxbErreurProfilNom.Text = "";
             TxbErreurMDP.Text = "";
             TxbErreurMDPConfirm.Text = "";
+        }
+        
+        private void BtnDeconnexion_Click(object sender, RoutedEventArgs e)
+        {
+            var app = (App)Application.Current;
+
+            app.GestionJoueur?.SeDeconnecter();
+
+            ActualiserAffichage();
+            this.Close();
+        }
+
+
+        private void BtnSuccès_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
