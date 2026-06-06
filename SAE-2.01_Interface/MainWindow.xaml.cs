@@ -25,6 +25,15 @@ namespace SAE_2._01_Interface
         {
             WindowProfil windowProfil = new WindowProfil();
             windowProfil.Show();
+            this.Close();
+
+        }
+
+        private void PageParametres_Click(object sender, RoutedEventArgs e)
+        {
+            Parametre parametre = new Parametre();
+            parametre.Show();
+            this.Close();
         }
     }
 }
