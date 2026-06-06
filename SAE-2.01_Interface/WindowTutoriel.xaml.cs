@@ -149,7 +149,7 @@ namespace SAE_2._01_Interface
                         { 1, 2, 1, 2, 2, 0, 0 }
                     },
                     Gagnantes: new (int, int)[] { (5,0), (4,1), (3,2), (2,3) },
-                    Astuce:    "Anticipez les diagonales adverses et défendez vos lignes."
+                    Astuce:    "Anticipez les diagonales adverses."
                 )
             };
         }
