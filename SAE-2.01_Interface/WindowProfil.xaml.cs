@@ -34,6 +34,8 @@ namespace SAE_2._01_Interface
                 TxtProfilTitre.Text = "Modifier votre profil";
 
                 StackPanelMDPConfirm.Visibility = Visibility.Collapsed;
+                TxbProfilNom.Text = "Modififer votre nom";
+                TxbMDP.Text = "Modifier votre mot de passe";
 
                 TxbConnexion.Visibility = Visibility.Collapsed;
 
@@ -86,6 +88,7 @@ namespace SAE_2._01_Interface
 
         private async void BtnValider_Click(object sender, RoutedEventArgs e)
         {
+            var app = Application.Current as App;
             TxbErreurProfilNom.Text = "";
             TxbErreurMDP.Text = "";
             TxbErreurMDPConfirm.Text = "";
@@ -97,8 +100,13 @@ namespace SAE_2._01_Interface
                 TxbErreurProfilNom.Text = "Veuillez saisir un nom.";
                 erreur = true;
             }
+            if (string.IsNullOrWhiteSpace(PbMDP.Password) && app.GestionJoueur.JoueurCo == null)
+            {
+                TxbErreurMDP.Text = "Veuillez saisir un mot de passe.";
+                erreur = true;
+            }
 
-            if (PbMDP.Password.Length < 6)
+            if (PbMDP.Password.Length < 6 && !string.IsNullOrWhiteSpace(PbMDP.Password))
             {
                 TxbErreurMDP.Text = "Le mot de passe doit contenir au moins 6 caractères.";
                 erreur = true;
@@ -112,7 +120,7 @@ namespace SAE_2._01_Interface
 
             if (!erreur)
             {
-                var app = Application.Current as App;
+                
                 if (app == null || app.GestionJoueur == null)
                 {
                     MessageBox.Show("Erreur interne : gestionnaire de joueurs non initialisé.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);

@@ -31,7 +31,7 @@ namespace Librairie_Système.Gestion
             JoueurCo = null;
         }
 
-        public async Task Inscrire(string pseudo, string mdp, string typeJoueur = "Humain", DateTime? dateNaissance = null, string? nom = null, string? prenom = null, int? numNationalite = null, int? numEquipe = null, int? numConfig = null)
+        public async Task Inscrire(string pseudo, string mdp, string typeJoueur = "Humain",int? numjoueur=null, DateTime? dateNaissance = null, string? nom = null, string? prenom = null, int? numNationalite = null, int? numEquipe = null, int? numConfig = null)
         {
             if (string.IsNullOrWhiteSpace(pseudo) || string.IsNullOrWhiteSpace(mdp)) throw new Exception("Ces champs sont requis");
             if (dateNaissance >= DateTime.Today) throw new Exception("Date de naissance invalide");
@@ -42,7 +42,7 @@ namespace Librairie_Système.Gestion
             var existant = await _table.ObtenirJoueur(pseudo);
             if (existant != null) throw new Exception("Pseudo déjà utilisé");
 
-            var joueur = new JoueurBD(pseudo, mdp, typeJoueur, dateNaissance, nom, prenom, numNationalite, numEquipe, numConfig);
+            var joueur = new JoueurBD(pseudo, mdp, typeJoueur, numjoueur, dateNaissance, nom, prenom, numNationalite, numEquipe, numConfig);
 
             await _table.AjouterJoueur(joueur);
         }
@@ -64,18 +64,22 @@ namespace Librairie_Système.Gestion
             JoueurCo.PseudoJoueur = pseudo;
             if (!string.IsNullOrWhiteSpace(mdp))
                 JoueurCo.MdpJoueur = mdp;
-            if (!string.IsNullOrWhiteSpace(typeJoueur))
-                JoueurCo.TypeJoueur = typeJoueur;
+
             if (dateNaissance.HasValue)
                 JoueurCo.DateNaissance = dateNaissance.Value;
+
             if (!string.IsNullOrWhiteSpace(nom))
                 JoueurCo.NomJoueur = nom;
+
             if (!string.IsNullOrWhiteSpace(prenom))
                 JoueurCo.PrenomJoueur = prenom;
+
             if (numNationalite.HasValue)
                 JoueurCo.NumNationalite = numNationalite.Value;
+
             if (numEquipe.HasValue)
                 JoueurCo.NumEquipe = numEquipe.Value;
+
             if (numConfig.HasValue)
                 JoueurCo.NumConfig = numConfig.Value;
             await _table.ModifierJoueur(JoueurCo);
