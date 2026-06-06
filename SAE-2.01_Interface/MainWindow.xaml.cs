@@ -24,7 +24,24 @@ namespace SAE_2._01_Interface
         private void PageProfil_Click(object sender, RoutedEventArgs e)
         {
             WindowProfil windowProfil = new WindowProfil();
-            windowProfil.Show();
+            windowProfil.ShowDialog();
+        }
+
+
+        private void Jouer_Click(object sender, RoutedEventArgs e)
+        {
+
+            var rep = MessageBox.Show(
+                "Voulez-vous regarder le tutoriel ?",
+                "Tutoriel",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (rep == MessageBoxResult.Yes)
+            {
+                var tutoriel = new WindowTutoriel();
+                tutoriel.ShowDialog();
+            }
         }
     }
 }
