@@ -20,6 +20,22 @@ namespace SAE_2._01_Interface
         public WindowConsulterProfil()
         {
             InitializeComponent();
+
         }
+        private bool editionNom = false;
+
+        private void BtnModifierNom_Click(object sender, RoutedEventArgs e)
+        {
+            editionNom = !editionNom;
+            TxtProfilNom.IsReadOnly = !editionNom;
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow home = new MainWindow();
+            home.Show();
+            this.Close();
+        }
+
     }
 }

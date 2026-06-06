@@ -66,16 +66,25 @@ namespace SAE_2._01_Interface
                 erreur = true;
             }
 
+            if (string.IsNullOrWhiteSpace(PbMDP.Password))
+            {
+                TxbErreurMDP.Text = "Veuillez saisir un mot de passe.";
+                erreur = true;
+            }
+
             if (PbMDP.Password.Length < 6)
             {
                 TxbErreurMDP.Text = "Le mot de passe doit contenir au moins 6 caractères.";
                 erreur = true;
             }
 
-            if (!ModeConnexion && PbMDP.Password != PbMDPConfirm.Password)
+            if (!ModeConnexion)
             {
-                TxbErreurMDPConfirm.Text = "Les mots de passe ne correspondent pas.";
-                erreur = true;
+                if (PbMDP.Password != PbMDPConfirm.Password)
+                {
+                    TxbErreurMDPConfirm.Text = "Les mots de passe ne correspondent pas.";
+                    erreur = true;
+                }
             }
 
             if (!erreur)
