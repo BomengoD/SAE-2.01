@@ -22,11 +22,17 @@ namespace SAE_2._01_Interface
         private const double TailleCase = 46;
         private const double TailleJeton = 38;
         private static readonly SolidColorBrush BrVide = Geler(80, 255, 255, 255); // blanc translucide
-        private static readonly SolidColorBrush BrNoir = Geler(255,0,0,0); // noir opaque
         private static readonly SolidColorBrush BrRouge = Geler(255, 231, 76, 60);
         private static readonly SolidColorBrush BrJaune = Geler(255, 241, 196, 15);
         private static readonly SolidColorBrush BrActif = Geler(255, 41, 128, 185); // dot actif (bleu)
         private static readonly SolidColorBrush BrInactif = Geler(255, 200, 200, 200); // dot inactif (gris)
+
+        private List<EtapeTutoriel> _etapes = null!;
+        private int _index;
+
+        private readonly Ellipse[,] _cellules = new Ellipse[NbLignes, NbColonnes];
+        private readonly TextBlock[] _fleches = new TextBlock[NbColonnes];
+        private Ellipse[] _dots = null!;
         public WindowTutoriel()
         {
             InitializeComponent();
@@ -51,12 +57,6 @@ namespace SAE_2._01_Interface
             int ColFleche = -1
         );
 
-        private List<EtapeTutoriel> _etapes = null!;
-        private int _index;
-
-        private readonly Ellipse[,] _cellules = new Ellipse[NbLignes, NbColonnes];
-        private readonly TextBlock[] _fleches = new TextBlock[NbColonnes];
-        private Ellipse[] _dots = null!;
         private void InitialiserEtapes()
         {
             var vide = new int[NbLignes, NbColonnes];
@@ -66,8 +66,7 @@ namespace SAE_2._01_Interface
             {
                 new(
                     Titre:       "Bienvenue dans Puissance 4 !",
-                    Description: "Le but du jeu est d'aligner 4 jetons de votre couleur "
-                                 + "en premier.\n"
+                    Description: "Le but du jeu est d'aligner 4 jetons de votre couleur " + "en premier.\n"
                                  + "L'alignement peut être horizontal, vertical ou diagonal.\n",
                     Plateau: new int[,]
                     {
@@ -79,16 +78,13 @@ namespace SAE_2._01_Interface
                         { 0, 0, 0, 0, 0, 0, 0 }
                     },
                     Gagnantes:   aucune,
-                    ColFleche: 1,
                     Astuce:      "Utilisez ◀ ▶ pour naviguer"
                 ),
 
                 new(
                     Titre:       "Faire tomber un jeton",
-                    Description: "Cliquez sur la colonne de votre choix pour y "
-                                 + "faire tomber un jeton.\n\n"
-                                 + "Le jeton descend automatiquement jusqu'à la case "
-                                 + "libre la plus basse de cette colonne.\n\n"
+                    Description: "Cliquez sur la colonne de votre choix pour y " + "faire tomber un jeton.\n\n"
+                                 + "Le jeton descend automatiquement jusqu'à la case " + "libre la plus basse de cette colonne.\n\n"
                                  + "La flèche ▼ indique la colonne choisie.",
                     Plateau: new int[,]
                     {
@@ -118,8 +114,7 @@ namespace SAE_2._01_Interface
                         { 0, 0, 1, 2, 0, 0, 0 },
                         { 0, 1, 2, 1, 2, 0, 0 }
                     },
-                    Gagnantes: aucune,
-                    Astuce:    "Rouge a joué 3 fois, Jaune 2 fois c'est donc le tour de Jaune."
+                    Gagnantes: aucune
                 ),
 
                 new(
@@ -135,24 +130,23 @@ namespace SAE_2._01_Interface
                         { 0, 0, 0, 0, 0, 0, 0 },
                         { 0, 0, 0, 0, 0, 0, 0 },
                         { 0, 2, 2, 2, 0, 0, 0 },
-                        { 0, 1, 1, 1, 1, 0, 0 }   // 4 rouges consécutifs
+                        { 0, 1, 1, 1, 1, 0, 0 }
                     },
                     Gagnantes: new (int, int)[] { (5,1), (5,2), (5,3), (5,4) }
                 ),
 
                 new(
                     Titre:       "Pensez en diagonale !",
-                    Description: "L'alignement diagonal est souvent le plus difficile "
-                                 + "à repérer et le plus redoutable.\n\n"
+                    Description: "L'alignement diagonal est souvent le plus difficile " + "à repérer et le plus redoutable.\n\n"
                                  + "Ici, le joueur rouge gagne avec une diagonale montante.",
                     Plateau: new int[,]
                     {
                         { 0, 0, 0, 0, 0, 0, 0 },
                         { 0, 0, 0, 0, 0, 0, 0 },
-                        { 0, 0, 0, 1, 0, 0, 0 },   // coin haut de la diagonale
+                        { 0, 0, 0, 1, 0, 0, 0 },
                         { 0, 0, 1, 2, 0, 0, 0 },
                         { 0, 1, 2, 2, 0, 0, 0 },
-                        { 1, 2, 1, 2, 2, 0, 0 }    // coin bas de la diagonale
+                        { 1, 2, 1, 2, 2, 0, 0 }
                     },
                     Gagnantes: new (int, int)[] { (5,0), (4,1), (3,2), (2,3) },
                     Astuce:    "Anticipez les diagonales adverses et défendez vos lignes."
@@ -239,7 +233,10 @@ namespace SAE_2._01_Interface
                 }
 
             for (int col = 0; col < NbColonnes; col++)
+            {
                 _fleches[col].Visibility = Visibility.Visible;
+                _fleches[col].Foreground = col == etape.ColFleche ? Brushes.Black : Brushes.White;
+            }
 
 
             for (int i = 0; i < _dots.Length; i++)
