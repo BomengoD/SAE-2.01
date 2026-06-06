@@ -32,13 +32,13 @@
                     <Button x:Name="BtnModifier">Modifier</Button>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Grid.Row="2">
+                <StackPanel x:Name="StackPanelProfilNom" Grid.Column="1" Grid.Row="2">
                     <TextBlock x:Name="TxbProfilNom">Nom</TextBlock>
                     <TextBox x:Name="TxtProfilNom"></TextBox>
                     <TextBlock x:Name="TxbErreurProfilNom" Foreground="Red"></TextBlock>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Grid.Row="3">
+                <StackPanel x:Name="StackPanelMDP" Grid.Column="1" Grid.Row="3">
                     <TextBlock x:Name="TxbMDP">Mot de passe</TextBlock>
                     <PasswordBox x:Name="PbMDP"/>
                     <TextBlock x:Name="TxbErreurMDP" Foreground="Red"></TextBlock>
@@ -49,6 +49,8 @@
                     <PasswordBox x:Name="PbMDPConfirm"/>
                     <TextBlock x:Name="TxbErreurMDPConfirm" Foreground="Red"></TextBlock>
                 </StackPanel>
+
+                <Button x:Name="BtnSuccès" Width="400" Height="30" Visibility="Collapsed" Grid.Column="1" Grid.Row="4" Click="BtnSuccès_Click">Consulter les succès</Button>
                 
                 <TextBlock x:Name="TxbConnexion" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center">
                     <Run Text="Déjà un compte ? "/>
@@ -62,6 +64,7 @@
                 
                 <Button x:Name="BtnReinitialiser" Grid.Row="6" Click="BtnReinitialiser_Click">Réinitialiser</Button>
                 <Button x:Name="BtnValider" Grid.Column="2" Grid.Row="6" Click="BtnValider_Click">Valider</Button>
+                <Button x:Name="BtnDeconnexion" Grid.Row="6"  Click="BtnDeconnexion_Click" Visibility="Collapsed">Déconnexion</Button>
 
             </Grid>
         </ScrollViewer>

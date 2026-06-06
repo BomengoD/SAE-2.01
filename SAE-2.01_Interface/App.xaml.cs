@@ -32,9 +32,12 @@ namespace SAE_2._01_Interface
             }
         }
 
-        protected override void OnExit(ExitEventArgs e)
+        protected override async void OnExit(ExitEventArgs e)
         {
-            BaseDeDonnees?.DisposeAsync();
+            if (BaseDeDonnees != null)
+            {
+                await BaseDeDonnees.DisposeAsync();
+            }
             base.OnExit(e);
         }
     }

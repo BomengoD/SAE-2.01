@@ -38,14 +38,7 @@ namespace Librairie_Accès_BD.Tables
             using var cmd = new MySqlCommand(sql, _co.Connection);
             cmd.Parameters.AddWithValue("@num", NumJoueur);
             using var lecteur = await cmd.ExecuteReaderAsync();
-            if (await lecteur.ReadAsync())
-            {
-                return Constructeur(lecteur);
-            }
-            else
-            {
-                return null;
-            }
+            return lecteur.Read() ? Constructeur(lecteur) : null;
         }
 
         public async Task<JoueurBD?> ObtenirJoueur(string pseudo)
@@ -99,6 +92,7 @@ namespace Librairie_Accès_BD.Tables
                 lecteur.GetString("PseudoJoueur"),
                 lecteur.GetString("MdpJoueur"),
                 lecteur.GetString("TypeJoueur"),
+                lecteur.GetInt32("NumJoueur"),
                 lecteur.IsDBNull(lecteur.GetOrdinal("DateNaissance")) ? null : lecteur.GetDateTime("DateNaissance"),
                 lecteur.IsDBNull(lecteur.GetOrdinal("NomJoueur")) ? null : lecteur.GetString("NomJoueur"),
                 lecteur.IsDBNull(lecteur.GetOrdinal("PrenomJoueur")) ? null : lecteur.GetString("PrenomJoueur"),

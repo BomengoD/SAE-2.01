@@ -9,7 +9,7 @@ namespace Librairie_Accès_BD.ModelesTables
 {
     public class JoueurBD
     {
-        private int _numjoueur;
+        private int? _numjoueur;
         private string? _nomjoueur;
         private string? _prenomjoueur;
         private string _pseudojoueur;
@@ -20,8 +20,9 @@ namespace Librairie_Accès_BD.ModelesTables
         private int? _numEquipe;
         private int? _numConfig;
 
-        public JoueurBD(string pseudojoueur, string mdpjoueur, string typejoueur, DateTime? datenaissance=null, string? nomjoueur=null, string? prenomjoueur=null, int? numNationalite=null, int? numEquipe=null, int? numConfig=null)
+        public JoueurBD(string pseudojoueur, string mdpjoueur, string typejoueur, int? numjoueur = null, DateTime? datenaissance=null, string? nomjoueur=null, string? prenomjoueur=null, int? numNationalite=null, int? numEquipe=null, int? numConfig=null)
         {
+            this._numjoueur = numjoueur;
             this._nomjoueur = nomjoueur;
             this._prenomjoueur = prenomjoueur;
             this._pseudojoueur = pseudojoueur;
@@ -32,7 +33,7 @@ namespace Librairie_Accès_BD.ModelesTables
             this._numEquipe = numEquipe;
             this._numConfig = numConfig;
         }
-        public int NumJoueur
+        public int? NumJoueur
         {
             get { return this._numjoueur; }
             set { this._numjoueur = value; }
