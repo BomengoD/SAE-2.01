@@ -32,7 +32,7 @@
                     <Button x:Name="BtnModifier" Width="200">Modifier</Button>
                 </StackPanel>
 
-                <StackPanel x:Name="StackPanelProfilNom"  Grid.Column="1" Grid.Row="2">
+                <StackPanel x:Name="StackPanelProfilNom" Grid.Column="1" Grid.Row="2">
                     <TextBlock x:Name="TxbProfilNom" Margin="0,0,0,5">Nom</TextBlock>
                     <TextBox x:Name="TxtProfilNom" BorderBrush="Black" BorderThickness="1"/>
                     <TextBlock x:Name="TxbErreurProfilNom" Foreground="Red"></TextBlock>
