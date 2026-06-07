@@ -47,8 +47,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Image Grid.ColumnSpan="3" Grid.RowSpan="3" Source="/assets/puissance4.png" Margin="8,0,33,48"/>
-            <Button Grid.Column="1" Grid.Row="2" Margin="90,50,90,20">Jouer</Button>
+            <Image Grid.ColumnSpan="3" Grid.RowSpan="2" Source="/assets/puissance4.png"/>
+            <Button Grid.Column="1" Grid.Row="2" Margin="20,20,20,20">Jouer</Button>
 
         </Grid>
     </Grid>
