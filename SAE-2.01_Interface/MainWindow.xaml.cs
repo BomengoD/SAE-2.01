@@ -50,6 +50,11 @@ namespace SAE_2._01_Interface
                 var tutoriel = new WindowTutoriel();
                 tutoriel.ShowDialog();
             }
+            else
+            {
+                var configuration = new WindowConfPartie();
+                configuration.ShowDialog();
+            }
         }
     }
 }
