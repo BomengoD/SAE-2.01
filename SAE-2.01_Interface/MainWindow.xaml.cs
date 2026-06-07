@@ -24,24 +24,16 @@ namespace SAE_2._01_Interface
         private void PageProfil_Click(object sender, RoutedEventArgs e)
         {
             WindowProfil windowProfil = new WindowProfil();
-            windowProfil.ShowDialog();
+            windowProfil.Show();
+            this.Close();
+
         }
 
-
-        private void Jouer_Click(object sender, RoutedEventArgs e)
+        private void PageParametres_Click(object sender, RoutedEventArgs e)
         {
-
-            var rep = MessageBox.Show(
-                "Voulez-vous regarder le tutoriel ?",
-                "Tutoriel",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question);
-
-            if (rep == MessageBoxResult.Yes)
-            {
-                var tutoriel = new WindowTutoriel();
-                tutoriel.ShowDialog();
-            }
+            Parametre parametre = new Parametre();
+            parametre.Show();
+            this.Close();
         }
     }
 }
