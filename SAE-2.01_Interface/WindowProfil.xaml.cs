@@ -40,7 +40,6 @@ namespace SAE_2._01_Interface
                 TxbConnexion.Visibility = Visibility.Collapsed;
 
                 BtnReinitialiser.Visibility = Visibility.Collapsed;
-                BtnDeconnexion.Visibility = Visibility.Visible;
                 BtnSuccès.Visibility = Visibility.Visible;
 
             }
