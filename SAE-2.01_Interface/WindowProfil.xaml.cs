@@ -158,7 +158,8 @@ namespace SAE_2._01_Interface
                         MessageBox.Show($"Erreur lors de l'inscription : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-                ActualiserAffichage();
+                MainWindow menu = new MainWindow();
+                menu.Show();
                 this.Close();
             }
         }
