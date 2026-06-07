@@ -49,6 +49,8 @@
                     <PasswordBox x:Name="PbMDPConfirm" BorderBrush="Black" BorderThickness="1"/>
                     <TextBlock x:Name="TxbErreurMDPConfirm" Foreground="Red"></TextBlock>
                 </StackPanel>
+
+                <Button x:Name="BtnSuccès" Width="400" Height="30" Visibility="Collapsed" Grid.Column="1" Grid.Row="4" Click="BtnSuccès_Click">Consulter les succès</Button>
                 
                 <TextBlock x:Name="TxbConnexion" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center">
                     <Run Text="Déjà un compte ? "/>

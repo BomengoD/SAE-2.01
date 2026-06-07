@@ -23,7 +23,7 @@ using System.Text;
 */
 namespace Librairie_Accès_BD
 {
-    public class ConnexionBD : IDisposable
+    public class ConnexionBD : IDisposable,IAsyncDisposable
     {
         //Il faut les infos SSH donc les infos d'un étudiant connecté au VPN de l'université pour que ça fonctionne
         private readonly string sshServer;
@@ -39,6 +39,8 @@ namespace Librairie_Accès_BD
         private ForwardedPortLocal? forwardedPort;
         private MySqlConnection? connection;
         private uint localPort;
+
+        private bool _dispose;
         public MySqlConnection Connection => connection ?? throw new InvalidOperationException("Connexion non ouverte.");
 
         //Constrcteur de la classe qui établit la connexion SSH et prépare la connexion à la base de données
@@ -68,28 +70,63 @@ namespace Librairie_Accès_BD
                 Password = databasePassword,
             };
 
-            connection = new MySqlConnection(NotreCo.ConnectionString);
+             connection = new MySqlConnection(NotreCo.ConnectionString);
         }
-        public void OuvrirConnexion()
+        public async Task OuvrirConnexion()
         {
-            //On ouvre la co
-            connection?.Open();
+            
+             await connection!.OpenAsync();
 
         }
 
-        public void FermerConnexion()
+        public async Task FermerConnexion()
         {
-            // Ferme la connexion à la base de données ou serveur sql si vous préférez mais on peut la re ouvrir après
-            connection?.Close();
+            
+            await connection!.CloseAsync();
         }
         public void Dispose()
         {
-            // Ferme la connexion au serveur SSH et là faut tout recommencer pour se reconnecter
-            connection?.Dispose();
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_dispose) 
+                return;
+
+            if (disposing)
+            {
+                
+                connection?.Dispose();
+            }
+
+
+            _dispose = true;
+        }
+        public async ValueTask DisposeAsync()
+        {
+            await DisposeAsyncCore();
+            Dispose(disposing: false);
+            GC.SuppressFinalize(this);
             forwardedPort?.Stop();
             forwardedPort?.Dispose();
             Client?.Disconnect();
             Client?.Dispose();
+        }
+
+        protected virtual async ValueTask DisposeAsyncCore()
+        {
+            if (_dispose)
+                return;
+
+
+            if (connection is IAsyncDisposable asyncConn)
+                await asyncConn.DisposeAsync();
+            else
+                connection?.Dispose();
+
+            _dispose = true;
         }
     }
 }
