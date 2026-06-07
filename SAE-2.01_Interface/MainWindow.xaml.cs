@@ -35,5 +35,21 @@ namespace SAE_2._01_Interface
             parametre.Show();
             this.Close();
         }
+
+        private void Jouer_Click(object sender, RoutedEventArgs e)
+        {
+
+            var rep = MessageBox.Show(
+                "Voulez-vous regarder le tutoriel ?",
+                "Tutoriel",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (rep == MessageBoxResult.Yes)
+            {
+                var tutoriel = new WindowTutoriel();
+                tutoriel.ShowDialog();
+            }
+        }
     }
 }
