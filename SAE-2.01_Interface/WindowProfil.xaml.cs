@@ -111,6 +111,12 @@ namespace SAE_2._01_Interface
                 erreur = true;
             }
 
+            if (TxtProfilNom.Text.Length < 3)
+            {
+                TxbErreurProfilNom.Text = "Le nom doit contenir au moins 3 caractères.";
+                erreur = true;
+            }
+
             if (PbMDP.Password.Length < 6)
             {
                 TxbErreurMDP.Text = "Le mot de passe doit contenir au moins 6 caractères.";
@@ -196,6 +202,13 @@ namespace SAE_2._01_Interface
         private void BtnSuccès_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BtnModifier_Click(object sender, RoutedEventArgs e)
+        {
+            WindowChangerPhoto changerPhoto = new WindowChangerPhoto();
+            changerPhoto.Show();
+            this.Close();
         }
     }
 }

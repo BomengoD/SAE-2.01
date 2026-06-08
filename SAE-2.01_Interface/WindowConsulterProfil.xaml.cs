@@ -37,5 +37,12 @@ namespace SAE_2._01_Interface
             this.Close();
         }
 
+        private void BtnModifier_Click(object sender, RoutedEventArgs e)
+        {
+            WindowChangerPhoto changerPhoto = new WindowChangerPhoto();
+            changerPhoto.Show();
+            this.Close();
+        }
+
     }
 }
