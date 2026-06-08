@@ -263,7 +263,12 @@ namespace SAE_2._01_Interface
         }
 
         private void BtnPasser_Click(object sender, RoutedEventArgs e) => Close();
-        private void BtnTerminer_Click(object sender, RoutedEventArgs e) => Close();
+        private void BtnTerminer_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            var jeu = new WindowJeu();
+            jeu.ShowDialog();
+        }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
