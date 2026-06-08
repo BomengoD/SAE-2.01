@@ -22,49 +22,7 @@ namespace SAE_2._01_Interface
             InitializeComponent();
         }
 
-        public class ConfigurationPartie
-        {
-            public string TypePartie { get; set; }
-            public int Largeur { get; set; }
-            public int Hauteur { get; set; }
-            public int JetonsAligner { get; set; }
-            public string Adversaire { get; set; }
-        }
-        private string typePartie;
-        private int largeur, hauteur;
-        private int jetonsAligner;
-        private string adversaire;
-
-        private void btn7x6_Click(object sender, RoutedEventArgs e)
-        {
-            adversaire = "IA";
-        }
-
-        private void btnPartieNormale_Click(object sender, RoutedEventArgs e)
-        {
-            typePartie = "normale";
-        }
-
-        private void btnLancer_Click(object sender, RoutedEventArgs e)
-        {
-            var config = new ConfigurationPartie
-            {
-                TypePartie = typePartie,
-                Largeur = largeur,
-                Hauteur = hauteur,
-                JetonsAligner = jetonsAligner,
-                Adversaire = adversaire
-            };
-
-            /*WindowJeu w = new WindowJeu(config);
-            w.Show();
-            this.Close();*/
-        }
-
-        private void txtJetons_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            int.TryParse(txtJetons.Text, out jetonsAligner);
-        }
+      
 
     }
 }
