@@ -52,8 +52,8 @@ namespace SAE_2._01_Interface
             }
             else
             {
-                var jeu = new WindowJeu();
-                jeu.ShowDialog();
+                var configuration = new WindowConfPartie();
+                configuration.ShowDialog();
             }
         }
     }
