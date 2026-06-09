@@ -17,14 +17,18 @@
                     <StackPanel Orientation="Horizontal" Margin="20,10">
                         <TextBlock Text="Taille des icônes" Width="150" VerticalAlignment="Center" Foreground="White"/>
                         <StackPanel>
-                            <TextBlock Text="{Binding ElementName=SliderIcones, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="#FFD700"/>
+
+                            <TextBlock Text="{Binding ElementName=SliderIcones, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="Red"/>
+
                             <Slider x:Name="SliderIcones" Width="200" Minimum="25" Maximum="200" Value="100"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="20,10">
                         <TextBlock Text="Taille des textes" Width="150" VerticalAlignment="Center" Foreground="White"/>
                         <StackPanel>
-                            <TextBlock Text="{Binding ElementName=SliderTextes, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="#FFD700"/>
+
+                            <TextBlock Text="{Binding ElementName=SliderTextes, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="Red"/>
+
                             <Slider x:Name="SliderTextes" Width="200" Minimum="25" Maximum="200" Value="100"/>
                         </StackPanel>
                     </StackPanel>
@@ -87,27 +91,36 @@
                     <StackPanel Orientation="Horizontal" Margin="20,10">
                         <TextBlock Text="Son général" Width="150" VerticalAlignment="Center" Foreground="White"/>
                         <StackPanel>
-                            <TextBlock Text="{Binding ElementName=SliderSonGeneral, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="#FFD700"/>
+
+                            <TextBlock Text="{Binding ElementName=SliderSonGeneral, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="Red"/>
+
                             <Slider x:Name="SliderSonGeneral" Width="200" Minimum="0" Maximum="100" Value="100"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="20,10">
                         <TextBlock Text="Musique" Width="150" VerticalAlignment="Center" Foreground="White"/>
                         <StackPanel>
-                            <TextBlock Text="{Binding ElementName=SliderMusique, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="#FFD700"/>
+
+                            <TextBlock Text="{Binding ElementName=SliderMusique, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="Red"/>
+
                             <Slider x:Name="SliderMusique" Width="200" Minimum="0" Maximum="100" Value="100"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="20,10">
                         <TextBlock Text="Effets sonores" Width="150" VerticalAlignment="Center" Foreground="White"/>
                         <StackPanel>
-                            <TextBlock Text="{Binding ElementName=SliderEffets, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="#FFD700"/>
+
+                            <TextBlock Text="{Binding ElementName=SliderEffets, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" Foreground="Red"/>
+
                             <Slider x:Name="SliderEffets" Width="200" Minimum="0" Maximum="100" Value="100"/>
                         </StackPanel>
                     </StackPanel>
                     <Grid Margin="0,30,0,10">
-                        <Button Content="Réinitialiser" Width="120" Height="35" HorizontalAlignment="Left" Click="BtnReset_Click" Background="#1E3A5F" Foreground="White" BorderBrush="#00BFFF"/>
-                        <Button Content="Valider" Width="120" Height="35" HorizontalAlignment="Right" Click="BtnValider_Click" Background="#E8192C" Foreground="White" BorderBrush="Transparent"/>
+
+                        <Button Content="Réinitialiser" Width="120" Height="35" HorizontalAlignment="Left" Click="BtnReset_Click"/>
+
+                        <Button Content="Valider" Width="120" Height="35" HorizontalAlignment="Right" Click="BtnValider_Click" Background="Green"/>
+
                     </Grid>
                 </StackPanel>
             </ScrollViewer>
