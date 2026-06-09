@@ -65,9 +65,6 @@ namespace SAE_2._01_Interface
                 var configuration = new WindowConfPartie();
                 configuration.ShowDialog();
 
-                var jouer = new WindowJeu();
-                jouer.ShowDialog();
-
             }
             this.Close();
         }
