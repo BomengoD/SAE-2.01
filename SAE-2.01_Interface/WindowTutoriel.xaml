@@ -56,8 +56,6 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
 
-                    <Button x:Name="BtnPasser" Content="Passer" Padding="12,6" Margin="0,0,14,0" Foreground="#95A5A6" BorderBrush="#BDC3C7" Click="BtnPasser_Click"/>
-
                     <Button x:Name="BtnPrecedent" Content="◀  Précédent" Padding="12,6" Margin="0,0,6,0" IsEnabled="False" Click="BtnPrecedent_Click"/>
 
                     <Button x:Name="BtnSuivant" Content="Suivant  ▶" Padding="14,6" Background="#2980B9" Foreground="White" BorderBrush="#2471A3" Click="BtnSuivant_Click"/>

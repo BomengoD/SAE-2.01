@@ -70,8 +70,8 @@ namespace SAE_2._01_Interface
                 }
                 else
                 {
-                    var jeu = new WindowJeu();
-                    jeu.Show();
+                    var config = new WindowConfPartie();
+                    config.Show();
                 }
             }
             this.Close();
