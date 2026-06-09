@@ -36,16 +36,17 @@ namespace SAE_2._01_Interface
         }
 
 
-        private void BtnDeconnexion_Click(object sender, RoutedEventArgs e)
+        private void Deconnexion_Click(object sender, RoutedEventArgs e)
         {
             var app = (App)Application.Current;
 
             app.GestionJoueur?.SeDeconnecter();
-
+            MainWindow home = new MainWindow();
+            home.Show();
             this.Close();
         }
 
-        private void Home_Click(object sender, RoutedEventArgs e)
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
             MainWindow home = new MainWindow();
             home.Show();
