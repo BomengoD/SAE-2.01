@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAE_2._01_Interface"
         mc:Ignorable="d"
-        Title="Paramètres"
-        Height="450"
-        Width="800">
+        Closing="Window_Closing"
+        Title="Paramètres" Height="450" Width="800">
 
     <Grid Background="#EDEDED">
 
