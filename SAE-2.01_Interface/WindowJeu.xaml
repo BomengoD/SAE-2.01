@@ -20,7 +20,7 @@
 
             <TextBlock Name="LabelStatut" Grid.Row="0" Text="Configurez la partie puis cliquez sur Nouvelle partie." FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,10" Foreground="White"/>
 
-            <Border Grid.Row="1" Margin="20,0,20,20" Background="#16213e" CornerRadius="8" Padding="8">
+            <Border Name="BorderGrille" Grid.Row="1" Margin="20,0,20,20" CornerRadius="8" Padding="8">
                 <UniformGrid Name="Grille" Background="Transparent"/>
             </Border>
         </Grid>

@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace SAE_2._01_Interface
 {
@@ -18,6 +19,23 @@ namespace SAE_2._01_Interface
 
         private void BtnValider_Click(object sender, RoutedEventArgs e)
         {
+            if (fondSelectionne != null)
+                ThemePartie.CouleurFond = fondSelectionne.Background;
+
+            if (cadreSelectionne != null)
+                ThemePartie.CouleurCadre = cadreSelectionne.Background;
+
+            if (jetonSelectionne != null)
+            {
+                Grid grille = (Grid)jetonSelectionne.Child;
+                Rectangle rectJoueur = (Rectangle)grille.Children[0];
+                Rectangle rectIA = (Rectangle)grille.Children[1];
+
+                ThemePartie.CouleurJoueur = rectJoueur.Fill;
+                ThemePartie.CouleurIA = rectIA.Fill;
+            }
+            MessageBox.Show($"Fond: {ThemePartie.CouleurFond}, Cadre: {ThemePartie.CouleurCadre}");
+
             MessageBox.Show("Les paramètres ont été sauvegardés.", "Validation", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -107,7 +125,7 @@ namespace SAE_2._01_Interface
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Retourner au menu ?","Confirmation",MessageBoxButton.YesNo,MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Retourner au menu ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
                 this.Close();
