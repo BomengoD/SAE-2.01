@@ -138,6 +138,10 @@
         BorderBrush="LightGray" BorderThickness="1"
         MouseLeftButtonDown="ChoixCadre_Click"/>
 
+                        <Border Background="#16213e" Width="35" Height="35" Margin="5"
+BorderBrush="LightGray" BorderThickness="1"
+MouseLeftButtonDown="ChoixCadre_Click"/>
+
                     </WrapPanel>
 
                     <TextBlock Text="Jetons" Margin="10"/>
@@ -180,6 +184,19 @@
                                 </Grid.ColumnDefinitions>
                                 <Rectangle Grid.Column="0" Fill="DarkSeaGreen"/>
                                 <Rectangle Grid.Column="1" Fill="Goldenrod"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Width="40" Height="40" Margin="5"
+BorderBrush="LightGray" BorderThickness="1"
+MouseLeftButtonDown="ChoixJetons_Click">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Fill="Red"/>
+                                <Rectangle Grid.Column="1" Fill="Yellow"/>
                             </Grid>
                         </Border>
 

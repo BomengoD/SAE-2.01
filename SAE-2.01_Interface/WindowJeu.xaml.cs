@@ -85,12 +85,13 @@ namespace SAE_2._01_Interface
             Grille.Rows = _nbLignes;
             Grille.Columns = _nbColonnes;
             Grille.Children.Clear();
+            BorderGrille.Background = ThemePartie.CouleurCadre;
 
             for (int ligne = 0; ligne < _nbLignes; ligne++)
             {
                 for (int col = 0; col < _nbColonnes; col++)
                 {
-                    Ellipse cercle = new Ellipse { Fill = Brushes.White, Stroke = Brushes.Black, Margin = new Thickness(2), Tag = col, Stretch = Stretch.Uniform };
+                    Ellipse cercle = new Ellipse {Fill = ThemePartie.CouleurFond, Stroke = Brushes.Transparent, Margin = new Thickness(4), Tag = col, Stretch = Stretch.Uniform};
 
                     cercle.MouseLeftButtonDown += Cercle_Click;
                     Grille.Children.Add(cercle);
@@ -140,7 +141,7 @@ namespace SAE_2._01_Interface
 
             int index = ligne * _nbColonnes + col;
             Ellipse e = (Ellipse)Grille.Children[index];
-            e.Fill = (joueur == JOUEUR) ? Brushes.Red : Brushes.Yellow;
+            e.Fill = (joueur == JOUEUR) ? ThemePartie.CouleurJoueur : ThemePartie.CouleurIA;
 
             if (IA.PartieTerminee(_grille, _nbColonnes, _nbLignes, _nbJetons, IA_ID, JOUEUR, _table))
             {
