@@ -52,8 +52,8 @@
         </ScrollViewer>
 
         <Grid Grid.Row="3" Margin="10">
-            <Button Content="Annuler" HorizontalAlignment="Left" Click="BtnRetour_Click" Margin="10,14,0,0" Width="110"/>
-            <Button Content="Valider" HorizontalAlignment="Left" Click="BtnValider_Click" Margin="654,14,0,0" Width="110"/>
+            <Button Content="Annuler" HorizontalAlignment="Left" Click="BtnRetour_Click" Margin="10,14,0,0" Width="110" Background="Red"/>
+            <Button Content="Valider" HorizontalAlignment="Left" Click="BtnValider_Click" Margin="654,14,0,0" Width="110" Background="Green"/>
         </Grid>
 
     </Grid>

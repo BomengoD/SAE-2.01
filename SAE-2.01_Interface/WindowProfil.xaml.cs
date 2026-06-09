@@ -159,11 +159,6 @@ namespace SAE_2._01_Interface
             TxbErreurMDPConfirm.Text = "";
         }
         
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            MainWindow home = new MainWindow();
-            home.Show();
-        }
 
         private void BtnModifier_Click(object sender, RoutedEventArgs e)
         {
@@ -177,6 +172,8 @@ namespace SAE_2._01_Interface
 
             if (result == MessageBoxResult.Yes)
             {
+                MainWindow home = new MainWindow();
+                home.Show();
                 this.Close();
             }
         }
