@@ -148,9 +148,21 @@ namespace SAE_2._01_Interface
 
         private void btnLancer_Click(object sender, RoutedEventArgs e)
         {
-            int _jetons = (int)SliderJetons.Value;
-            var jeu = new WindowJeu(_nbLignes, _nbColonnes, _jetons, _mode, _adv);
-            jeu.ShowDialog();
+            bool adversaireChoisi = btnInvite.IsChecked == true || btnIA.IsChecked == true;
+
+            bool difficulteOK = btnInvite.IsChecked == true || BtnFacile.IsChecked == true || BtnMoyen.IsChecked == true || BtnDifficile.IsChecked == true;
+
+            if (!adversaireChoisi || !difficulteOK)
+            {
+                MessageBox.Show("Veuillez sélectionner un adversaire et une difficulté (si adversaire IA) avant de lancer la partie.", "Configuration Incomplète", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            else
+            {
+                int _jetons = (int)SliderJetons.Value;
+                var jeu = new WindowJeu(_nbLignes, _nbColonnes, _jetons, _mode, _adv);
+                jeu.ShowDialog();
+            }
         }
 
         private void BtnReinitialiser_Click(object sender, RoutedEventArgs e)
