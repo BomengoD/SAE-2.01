@@ -34,7 +34,7 @@ namespace SAE_2._01_Interface
                 ThemePartie.CouleurJoueur = rectJoueur.Fill;
                 ThemePartie.CouleurIA = rectIA.Fill;
             }
-            MessageBox.Show($"Fond: {ThemePartie.CouleurFond}, Cadre: {ThemePartie.CouleurCadre}");
+            
 
             MessageBox.Show("Les paramètres ont été sauvegardés.", "Validation", MessageBoxButton.OK, MessageBoxImage.Information);
         }
