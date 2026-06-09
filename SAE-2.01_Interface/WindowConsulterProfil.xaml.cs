@@ -20,14 +20,29 @@ namespace SAE_2._01_Interface
         public WindowConsulterProfil()
         {
             InitializeComponent();
+        }
+
+        private bool editionNom = false;
+
+        private void ActualiserAffichage()
+        {
 
         }
-        private bool editionNom = false;
 
         private void BtnModifierNom_Click(object sender, RoutedEventArgs e)
         {
             editionNom = !editionNom;
             TxtProfilNom.IsReadOnly = !editionNom;
+        }
+
+
+        private void BtnDeconnexion_Click(object sender, RoutedEventArgs e)
+        {
+            var app = (App)Application.Current;
+
+            app.GestionJoueur?.SeDeconnecter();
+
+            this.Close();
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)
@@ -37,5 +52,10 @@ namespace SAE_2._01_Interface
             this.Close();
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow home = new MainWindow();
+            home.Show();
+        }
     }
 }
