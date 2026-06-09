@@ -62,11 +62,17 @@ namespace SAE_2._01_Interface
             }
             else
             {
-                var configuration = new WindowConfPartie();
-                configuration.ShowDialog();
-
-                var jouer = new WindowJeu();
-                jouer.ShowDialog();
+                var joueurco = ((App)Application.Current).GestionJoueur?.JoueurCo;
+                if (joueurco != null)
+                {
+                    var reprendre = new WindowReprendre();
+                    reprendre.Show();
+                }
+                else
+                {
+                    var config = new WindowConfPartie();
+                    config.Show();
+                }
 
             }
             this.Close();

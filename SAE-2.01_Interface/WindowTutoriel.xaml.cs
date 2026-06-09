@@ -271,8 +271,8 @@ namespace SAE_2._01_Interface
             }
             else
             {
-                var config = new WindowConfPartie();
-                config.Show();
+                var jeu = new WindowJeu(6, 7, 4, "Normal", "Facile");
+                jeu.ShowDialog();
             }
             this.Close();
         }
