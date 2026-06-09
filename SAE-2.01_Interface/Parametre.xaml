@@ -52,17 +52,7 @@
                VerticalAlignment="Center"
                Grid.Column="0"/>
 
-                        <Button Content="✕"
-            Width="30"
-            Height="30"
-            Grid.Column="1"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Click="BtnClose_Click"
-            Background="Transparent"
-            BorderBrush="Transparent"
-            FontSize="16"
-            FontWeight="Bold"/>
+                       
 
                     </Grid>
 
