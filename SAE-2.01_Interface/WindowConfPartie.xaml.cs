@@ -22,7 +22,10 @@ namespace SAE_2._01_Interface
             InitializeComponent();
         }
 
-      
-
+        private void btnLancer_Click(object sender, RoutedEventArgs e)
+        {
+            var jeu = new WindowJeu();
+            jeu.ShowDialog();
+        }
     }
 }
