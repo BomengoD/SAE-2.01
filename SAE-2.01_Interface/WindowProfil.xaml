@@ -61,7 +61,7 @@
                 </TextBlock>
                 
                 <Button x:Name="BtnReinitialiser" Grid.Row="6" Click="BtnReinitialiser_Click" Margin="10,0,0,10">Réinitialiser</Button>
-                <Button x:Name="BtnValider" Grid.Column="2" Grid.Row="6" Click="BtnValider_Click" Margin="0,0,10,10">Valider</Button>
+                <Button x:Name="BtnValider" Grid.Column="2" Grid.Row="6" Click="BtnValider_Click" Margin="0,0,10,10" Background="Green">Valider</Button>
 
             </Grid>
         </ScrollViewer>
