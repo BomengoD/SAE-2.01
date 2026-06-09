@@ -58,7 +58,7 @@ namespace SAE_2._01_Interface
             if (rep == MessageBoxResult.Yes)
             {
                 var tutoriel = new WindowTutoriel();
-                tutoriel.ShowDialog();
+                tutoriel.Show();
             }
             else
             {
@@ -66,14 +66,15 @@ namespace SAE_2._01_Interface
                 if (joueurco != null)
                 {
                     var reprendre = new WindowReprendre();
-                    reprendre.ShowDialog();
+                    reprendre.Show();
                 }
                 else
                 {
                     var jeu = new WindowJeu();
-                    jeu.ShowDialog();
+                    jeu.Show();
                 }
             }
+            this.Close();
         }
     }
 }
