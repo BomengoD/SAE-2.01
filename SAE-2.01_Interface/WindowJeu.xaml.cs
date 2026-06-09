@@ -41,7 +41,7 @@ namespace SAE_2._01_Interface
         {
             return Math.Clamp(12 - jetons, 4, 10);
         }
-
+        
         private void ActualiserPartie(int nbLignes, int nbColonnes, int nbJetons)
         {
             _nbLignes = nbLignes;
