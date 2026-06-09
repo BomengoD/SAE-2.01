@@ -22,6 +22,7 @@ namespace SAE_2._01_Interface
         private int _nbColonnes;
         private int _nbJetons;
         private int _profondeur;
+        private string _difficulte;
         private const int JOUEUR1 = 1;
         private const int JOUEUR2 = 2;
 
@@ -34,12 +35,18 @@ namespace SAE_2._01_Interface
         public WindowJeu(int nbLignes, int nbColonnes, int nbJetons, string mode, string adv)
         {
             InitializeComponent();
+            _difficulte = adv;
             ActualiserPartie(nbLignes, nbColonnes, nbJetons);
         }
 
         private int CalculerProfondeur(int jetons)
         {
-            return Math.Clamp(12 - jetons, 4, 10);
+            return _difficulte switch
+            {
+                "Moyen" => 2,
+                "Difficile" => Math.Clamp(12 - jetons, 4, 10),
+                _ => 0  // Facile : profondeur non utilisée
+            };
         }
         
         private void ActualiserPartie(int nbLignes, int nbColonnes, int nbJetons)
@@ -97,7 +104,24 @@ namespace SAE_2._01_Interface
 
             Dispatcher.InvokeAsync(() =>
             {
-                int colIA = AlphaBetaClass.ChoisirCoupAlphaBeta(_grille, _nbColonnes, _nbLignes, _nbJetons, _profondeur, JOUEUR2, JOUEUR1, _table, _ordre);
+                int colIA;
+
+                if (_difficulte == "Facile")
+                {
+                    // Coup aléatoire parmi les colonnes jouables
+                    var colonnesJouables = new List<int>();
+                    for (int c = 0; c < _nbColonnes; c++)
+                        if (Jeu.ColonneJouable(_grille, c))
+                            colonnesJouables.Add(c);
+
+                    colIA = colonnesJouables[new Random().Next(colonnesJouables.Count)];
+                }
+                else
+                {
+                    colIA = AlphaBetaClass.ChoisirCoupAlphaBeta(
+                        _grille, _nbColonnes, _nbLignes, _nbJetons,
+                        _profondeur, JOUEUR2, JOUEUR1, _table, _ordre);
+                }
 
                 JouerEtAfficher(colIA, JOUEUR2);
 
