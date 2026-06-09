@@ -22,8 +22,8 @@ namespace SAE_2._01_Interface
         private int _nbColonnes;
         private int _nbJetons;
         private int _profondeur;
-        private const int JOUEUR = 1;
-        private const int IA_ID = 2;
+        private const int JOUEUR1 = 1;
+        private const int JOUEUR2 = 2;
 
         private int[,] _grille;
         private int[,] _table;
@@ -31,15 +31,10 @@ namespace SAE_2._01_Interface
         private bool _partieEnCours;
         private bool _tourJoueur;
 
-        public WindowJeu(int nbLignes, int nbColonnes, string mode, string adv)
+        public WindowJeu(int nbLignes, int nbColonnes, int nbJetons, string mode, string adv)
         {
             InitializeComponent();
-            ActualiserPartie(nbLignes, nbColonnes);
-        }
-
-        private int CalculerNbJetons(int lignes, int colonnes)
-        {
-            return Math.Min(lignes, colonnes) / 2 + 1;
+            ActualiserPartie(nbLignes, nbColonnes, nbJetons);
         }
 
         private int CalculerProfondeur(int jetons)
@@ -47,12 +42,11 @@ namespace SAE_2._01_Interface
             return Math.Clamp(12 - jetons, 4, 10);
         }
 
-        
-        private void ActualiserPartie(int nbLignes, int nbColonnes)
+        private void ActualiserPartie(int nbLignes, int nbColonnes, int nbJetons)
         {
             _nbLignes = nbLignes;
             _nbColonnes = nbColonnes;
-            _nbJetons = CalculerNbJetons(_nbLignes, _nbColonnes);
+            _nbJetons = nbJetons;
             _profondeur = CalculerProfondeur(_nbJetons);
 
             _grille = new int[_nbLignes, _nbColonnes];
@@ -91,7 +85,7 @@ namespace SAE_2._01_Interface
             if (!Jeu.ColonneJouable(_grille, col))
                 return;
 
-            JouerEtAfficher(col, JOUEUR);
+            JouerEtAfficher(col, JOUEUR1);
 
             if (!_partieEnCours)
                 return;
@@ -102,9 +96,9 @@ namespace SAE_2._01_Interface
 
             Dispatcher.InvokeAsync(() =>
             {
-                int colIA = AlphaBetaClass.ChoisirCoupAlphaBeta(_grille, _nbColonnes, _nbLignes, _nbJetons, _profondeur, IA_ID, JOUEUR, _table, _ordre);
+                int colIA = AlphaBetaClass.ChoisirCoupAlphaBeta(_grille, _nbColonnes, _nbLignes, _nbJetons, _profondeur, JOUEUR2, JOUEUR1, _table, _ordre);
 
-                JouerEtAfficher(colIA, IA_ID);
+                JouerEtAfficher(colIA, JOUEUR2);
 
                 if (_partieEnCours)
                 {
@@ -123,13 +117,13 @@ namespace SAE_2._01_Interface
 
             int index = ligne * _nbColonnes + col;
             Ellipse e = (Ellipse)Grille.Children[index];
-            e.Fill = (joueur == JOUEUR) ? Brushes.Red : Brushes.Yellow;
+            e.Fill = (joueur == JOUEUR1) ? Brushes.Red : Brushes.Yellow;
 
-            if (IA.PartieTerminee(_grille, _nbColonnes, _nbLignes, _nbJetons, IA_ID, JOUEUR, _table))
+            if (IA.PartieTerminee(_grille, _nbColonnes, _nbLignes, _nbJetons, JOUEUR2, JOUEUR1, _table))
             {
                 _partieEnCours = false;
 
-                int score = Heuristique.Parcours(_grille, _nbColonnes, _nbLignes, _nbJetons, IA_ID, JOUEUR, _table);
+                int score = Heuristique.Parcours(_grille, _nbColonnes, _nbLignes, _nbJetons, JOUEUR2, JOUEUR1, _table);
 
                 if (score >= 100000)
                 {

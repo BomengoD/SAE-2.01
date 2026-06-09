@@ -266,7 +266,7 @@ namespace SAE_2._01_Interface
         private void BtnTerminer_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            var jeu = new WindowJeu(6, 7);
+            var jeu = new WindowJeu(6, 7, 4, "Normal", "Facile");
             jeu.ShowDialog();
         }
 
