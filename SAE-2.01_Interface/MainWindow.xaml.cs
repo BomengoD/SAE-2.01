@@ -23,9 +23,19 @@ namespace SAE_2._01_Interface
 
         private void PageProfil_Click(object sender, RoutedEventArgs e)
         {
-            WindowProfil windowProfil = new WindowProfil();
-            windowProfil.Show();
-            this.Close();
+            var joueurco = ((App)Application.Current).GestionJoueur?.JoueurCo;
+            if (joueurco != null)
+            {
+                WindowConsulterProfil consulterProfil = new WindowConsulterProfil();
+                consulterProfil.Show();
+                this.Close();
+            }
+            else
+            {
+                WindowProfil windowProfil = new WindowProfil();
+                windowProfil.Show();
+                this.Close();
+            }
 
         }
 

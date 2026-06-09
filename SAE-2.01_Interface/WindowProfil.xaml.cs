@@ -21,39 +21,12 @@ namespace SAE_2._01_Interface
         public WindowProfil()
         {
             InitializeComponent();
-            ActualiserAffichage();
         }
 
         bool ModeConnexion = false;
-        private void ActualiserAffichage()
-        {
-            var app = (App)Application.Current;
-
-            if (app.GestionJoueur?.JoueurCo != null)
-            {
-                TxtProfilTitre.Text = "Modifier votre profil";
-
-                StackPanelMDPConfirm.Visibility = Visibility.Collapsed;
-                TxbProfilNom.Text = "Modififer votre nom";
-                TxbMDP.Text = "Modifier votre mot de passe";
-
-                TxbConnexion.Visibility = Visibility.Collapsed;
-
-                BtnReinitialiser.Visibility = Visibility.Collapsed;
-            }
-            else if(StackPanelMDP.Visibility == Visibility.Collapsed)
-            {
-                TxtProfilTitre.Text = "Création du Profil";
-                BtnModifier.Visibility = Visibility.Visible;
-                StackPanelProfilNom.Visibility = Visibility.Visible;
-                StackPanelMDP.Visibility = Visibility.Visible;
-
-                StackPanelMDPConfirm.Visibility = Visibility.Visible;
-                BtnReinitialiser.Visibility = Visibility.Visible;
-                TxbConnexion.Visibility = Visibility.Visible;
-            }
+        
             
-        }
+     
         private void HyperlinkConnexion_Click(object sender, RoutedEventArgs e)
         {
             ModeConnexion = true;
@@ -164,7 +137,6 @@ namespace SAE_2._01_Interface
                         MessageBox.Show($"Erreur lors de l'inscription : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-                ActualiserAffichage();
                 WindowConsulterProfil profil = new WindowConsulterProfil();
                 profil.Show();
                 this.Close();
