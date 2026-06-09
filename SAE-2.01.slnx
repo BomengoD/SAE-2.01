@@ -2,7 +2,4 @@
   <Project Path="Librairie_Accès_BD/Librairie_Accès_BD.csproj" />
   <Project Path="Librairie_Système/Librairie_Système.csproj" />
   <Project Path="SAE-2.01_Interface/SAE-2.01_Interface.csproj" />
-  <Project Path="Test_BD/Test_BD.csproj" Id="01d59b5d-40b0-45b0-9417-6752f7069f26">
-    <Build Solution="Debug|*" Project="false" />
-  </Project>
 </Solution>

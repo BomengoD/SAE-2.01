@@ -15,14 +15,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="5">
-            <Button HorizontalAlignment="Left" Background="Transparent" BorderThickness="0" Click="BtnHome_Click">
-                <TextBlock Text="🏠" FontSize="50"/>
-            </Button>
-            <Button HorizontalAlignment="Right" Background="Transparent" BorderThickness="0" Click="BtnRetour_Click">
-                <TextBlock Text="✕" FontSize="20" Margin="0,0,15,0" Height="35" Width="24"/>
-            </Button>
-        </Grid>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="10">
             <TextBlock Text="Photo actuelle" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,5"/>

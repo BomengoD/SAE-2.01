@@ -1,0 +1,28 @@
+﻿<Window x:Class="SAE_2._01_Interface.WindowJeu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SAE_2._01_Interface"
+        mc:Ignorable="d"
+        Title="WindowJeu" Height="750" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Background="#0f3460">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Name="LabelStatut" Grid.Row="0" Text="Configurez la partie puis cliquez sur Nouvelle partie." FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,10" Foreground="White"/>
+
+            <Border Name="BorderGrille" Grid.Row="1" Margin="20,0,20,20" CornerRadius="8" Padding="8">
+                <UniformGrid Name="Grille" Background="Transparent"/>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

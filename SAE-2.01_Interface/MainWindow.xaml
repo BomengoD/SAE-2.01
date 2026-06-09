@@ -31,7 +31,7 @@
             <Button Click="PageParametres_Click" Margin="30,0,30,0">Paramètres</Button>
         </StackPanel>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="30" Margin="30,30,0,0" >Menu</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="30" Margin="30,30,0,0" >🏠</TextBlock>
 
         <Grid Grid.ColumnSpan="5" Grid.Row="2">
 

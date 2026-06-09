@@ -21,41 +21,12 @@ namespace SAE_2._01_Interface
         public WindowProfil()
         {
             InitializeComponent();
-            ActualiserAffichage();
         }
 
         bool ModeConnexion = false;
-        private void ActualiserAffichage()
-        {
-            var app = (App)Application.Current;
-
-            if (app.GestionJoueur?.JoueurCo != null)
-            {
-                TxtProfilTitre.Text = "Modifier votre profil";
-
-                StackPanelMDPConfirm.Visibility = Visibility.Collapsed;
-                TxbProfilNom.Text = "Modififer votre nom";
-                TxbMDP.Text = "Modifier votre mot de passe";
-
-                TxbConnexion.Visibility = Visibility.Collapsed;
-
-                BtnReinitialiser.Visibility = Visibility.Collapsed;
-                BtnSuccès.Visibility = Visibility.Visible;
-
-            }
-            else if(StackPanelMDP.Visibility == Visibility.Collapsed)
-            {
-                TxtProfilTitre.Text = "Création du Profil";
-                BtnModifier.Visibility = Visibility.Visible;
-                StackPanelProfilNom.Visibility = Visibility.Visible;
-                StackPanelMDP.Visibility = Visibility.Visible;
-
-                StackPanelMDPConfirm.Visibility = Visibility.Visible;
-                BtnReinitialiser.Visibility = Visibility.Visible;
-                TxbConnexion.Visibility = Visibility.Visible;
-            }
+        
             
-        }
+     
         private void HyperlinkConnexion_Click(object sender, RoutedEventArgs e)
         {
             ModeConnexion = true;
@@ -172,8 +143,8 @@ namespace SAE_2._01_Interface
                         MessageBox.Show($"Erreur lors de l'inscription : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-                MainWindow menu = new MainWindow();
-                menu.Show();
+                WindowConsulterProfil profil = new WindowConsulterProfil();
+                profil.Show();
                 this.Close();
             }
         }
@@ -188,27 +159,23 @@ namespace SAE_2._01_Interface
             TxbErreurMDPConfirm.Text = "";
         }
         
-        private void BtnDeconnexion_Click(object sender, RoutedEventArgs e)
-        {
-            var app = (App)Application.Current;
-
-            app.GestionJoueur?.SeDeconnecter();
-
-            ActualiserAffichage();
-            this.Close();
-        }
-
-
-        private void BtnSuccès_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void BtnModifier_Click(object sender, RoutedEventArgs e)
         {
             WindowChangerPhoto changerPhoto = new WindowChangerPhoto();
-            changerPhoto.Show();
-            this.Close();
+            changerPhoto.ShowDialog();
+        }
+
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Retourner au menu ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                MainWindow home = new MainWindow();
+                home.Show();
+                this.Close();
+            }
         }
     }
 }
