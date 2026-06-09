@@ -30,7 +30,7 @@ namespace SAE_2._01_Interface
             TxtProfilNom.IsReadOnly = !editionNom;
         }
 
-        private void Home_Click(object sender, RoutedEventArgs e)
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
             MainWindow home = new MainWindow();
             home.Show();
