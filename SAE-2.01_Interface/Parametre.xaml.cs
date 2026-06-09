@@ -105,24 +105,6 @@ namespace SAE_2._01_Interface
             jetonSelectionne.BorderThickness = new Thickness(3);
         }
 
-        private void BtnClose_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("Voulez-vous enregistrer les modifications ?", "Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-
-            MainWindow home = new MainWindow();
-            home.Show();
-
-            if (result == MessageBoxResult.Yes)
-            {
-                BtnValider_Click(sender, e);
-                this.Close();
-            }
-            else if (result == MessageBoxResult.No)
-            {
-                this.Close();
-            }
-        }
-
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show(

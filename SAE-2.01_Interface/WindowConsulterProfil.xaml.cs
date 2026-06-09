@@ -52,10 +52,12 @@ namespace SAE_2._01_Interface
             this.Close();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void BtnModifier_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow home = new MainWindow();
-            home.Show();
+            WindowChangerPhoto changerPhoto = new WindowChangerPhoto();
+            changerPhoto.Show();
+            this.Close();
         }
+
     }
 }

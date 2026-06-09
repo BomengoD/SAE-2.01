@@ -27,7 +27,7 @@
 
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Image Source="/assets/profil.png" Height="75"/>
-            <Button x:Name="BtnModifier" Width="200">Modifier</Button>
+            <Button x:Name="BtnModifier" Width="200" Click="BtnModifier_Click">Modifier</Button>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="2">
