@@ -53,7 +53,9 @@
                         <Border Background="IndianRed" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixCadre_Click"/>
                         <Border Background="MediumPurple" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixCadre_Click"/>
                         <Border Background="SeaGreen" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixCadre_Click"/>
-                    </WrapPanel>
+                        <Border Background="DarkBlue" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixCadre_Click"/>
+
+                    </WrapPanel> 
                     <TextBlock Text="Jetons" Foreground="White" Margin="10"/>
                     <WrapPanel Margin="20,0">
                         <Border Width="40" Height="40" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixJetons_Click">
@@ -84,6 +86,16 @@
                                 </Grid.ColumnDefinitions>
                                 <Rectangle Grid.Column="0" Fill="DarkSeaGreen"/>
                                 <Rectangle Grid.Column="1" Fill="Goldenrod"/>
+                            </Grid>
+                        </Border>
+                        <Border Width="40" Height="40" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixJetons_Click">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Fill="Red"/>
+                                <Rectangle Grid.Column="1" Fill="Yellow"/>
                             </Grid>
                         </Border>
                     </WrapPanel>
