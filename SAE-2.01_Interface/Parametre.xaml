@@ -20,17 +20,7 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Content="🏠"
-        Width="64"
-        Height="46"
-        Grid.Column="0"
-        VerticalAlignment="Top"
-        HorizontalAlignment="Left"
-        Margin="23,20,0,0"
-        Click="BtnHome_Click"
-        Background="Transparent"
-        BorderBrush="Transparent"
-        FontSize="30" RenderTransformOrigin="-0.657,0.299"/>
+        <Button Content="🏠" Width="64" Height="46" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="23,20,0,0" Click="BtnHome_Click" Background="Transparent" BorderBrush="Transparent" FontSize="30" RenderTransformOrigin="-0.657,0.299"/>
 
         <Border Grid.Column="1" Margin="20" BorderBrush="Black" BorderThickness="2" Background="White">
 
@@ -45,23 +35,9 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Paramètres"
-               FontSize="28"
-               FontWeight="Bold"
-               VerticalAlignment="Center"
-               Grid.Column="0"/>
+                        <TextBlock Text="Paramètres" FontSize="28" FontWeight="Bold" VerticalAlignment="Center" Grid.Column="0"/>
 
-                        <Button Content="✕"
-            Width="30"
-            Height="30"
-            Grid.Column="1"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Click="BtnClose_Click"
-            Background="Transparent"
-            BorderBrush="Transparent"
-            FontSize="16"
-            FontWeight="Bold"/>
+
 
                     </Grid>
 
@@ -110,42 +86,26 @@
 
                     <WrapPanel Margin="20,0">
 
-                        <Border Background="White" Width="35" Height="35" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixFond_Click"/>
+                        <Border Background="White" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixFond_Click"/>
 
-                        <Border Background="Black" Width="35" Height="35" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixFond_Click"/>
+                        <Border Background="Black" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixFond_Click"/>
 
-                        <Border Background="LightSteelBlue" Width="35" Height="35" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixFond_Click"/>
+                        <Border Background="LightSteelBlue" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixFond_Click"/>
 
-                        <Border Background="Honeydew" Width="35" Height="35" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixFond_Click"/>
+                        <Border Background="Honeydew" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixFond_Click"/>
 
                     </WrapPanel>
                     <TextBlock Text="Cadre" Margin="10"/>
 
                     <WrapPanel Margin="20,0">
 
-                        <Border Background="SteelBlue" Width="35" Height="35" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixCadre_Click"/>
+                        <Border Background="SteelBlue" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixCadre_Click"/>
 
-                        <Border Background="IndianRed" Width="35" Height="35" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixCadre_Click"/>
+                        <Border Background="IndianRed" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixCadre_Click"/>
 
-                        <Border Background="MediumPurple" Width="35" Height="35" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixCadre_Click"/>
+                        <Border Background="MediumPurple" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixCadre_Click"/>
 
-                        <Border Background="SeaGreen" Width="35" Height="35" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixCadre_Click"/>
+                        <Border Background="SeaGreen" Width="35" Height="35" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixCadre_Click"/>
 
                     </WrapPanel>
 
@@ -153,9 +113,7 @@
 
                     <WrapPanel Margin="20,0">
 
-                        <Border Width="40" Height="40" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixJetons_Click">
+                        <Border Width="40" Height="40" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixJetons_Click">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -166,9 +124,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Width="40" Height="40" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixJetons_Click">
+                        <Border Width="40" Height="40" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixJetons_Click">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -179,9 +135,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Width="40" Height="40" Margin="5"
-        BorderBrush="LightGray" BorderThickness="1"
-        MouseLeftButtonDown="ChoixJetons_Click">
+                        <Border Width="40" Height="40" Margin="5" BorderBrush="LightGray" BorderThickness="1" MouseLeftButtonDown="ChoixJetons_Click">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -216,14 +170,9 @@
 
                         <StackPanel>
 
-                            <TextBlock Text="{Binding ElementName=SliderMusique, Path=Value, StringFormat={}{0:0}%}" 
-                   HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding ElementName=SliderMusique, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center"/>
 
-                            <Slider x:Name="SliderMusique"
-                Width="200"
-                Minimum="0"
-                Maximum="100"
-                Value="100"/>
+                            <Slider x:Name="SliderMusique" Width="200" Minimum="0" Maximum="100" Value="100"/>
 
                         </StackPanel>
 

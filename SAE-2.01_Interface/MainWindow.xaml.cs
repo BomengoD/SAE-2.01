@@ -23,9 +23,19 @@ namespace SAE_2._01_Interface
 
         private void PageProfil_Click(object sender, RoutedEventArgs e)
         {
-            WindowProfil windowProfil = new WindowProfil();
-            windowProfil.Show();
-            this.Close();
+            var joueurco = ((App)Application.Current).GestionJoueur?.JoueurCo;
+            if (joueurco != null)
+            {
+                WindowConsulterProfil consulterProfil = new WindowConsulterProfil();
+                consulterProfil.Show();
+                this.Close();
+            }
+            else
+            {
+                WindowProfil windowProfil = new WindowProfil();
+                windowProfil.Show();
+                this.Close();
+            }
 
         }
 
@@ -48,13 +58,23 @@ namespace SAE_2._01_Interface
             if (rep == MessageBoxResult.Yes)
             {
                 var tutoriel = new WindowTutoriel();
-                tutoriel.ShowDialog();
+                tutoriel.Show();
             }
             else
             {
-                var configuration = new WindowConfPartie();
-                configuration.ShowDialog();
+                var joueurco = ((App)Application.Current).GestionJoueur?.JoueurCo;
+                if (joueurco != null)
+                {
+                    var reprendre = new WindowReprendre();
+                    reprendre.Show();
+                }
+                else
+                {
+                    var jeu = new WindowJeu();
+                    jeu.Show();
+                }
             }
+            this.Close();
         }
     }
 }

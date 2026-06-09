@@ -32,4 +32,10 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="WindowChangerPhoto.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
 </Project>

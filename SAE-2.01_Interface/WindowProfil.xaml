@@ -25,12 +25,12 @@
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-
                 <TextBlock x:Name="TxtProfilTitre" Grid.ColumnSpan="3" FontSize="20"><Run Language="fr-fr" Text=" Créer votre profil"/></TextBlock>
+                <Button Content="🏠" Width="64" Height="46" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="23,20,0,0" Click="BtnHome_Click" Background="Transparent" BorderBrush="Transparent" FontSize="30" RenderTransformOrigin="-0.657,0.299"/>
 
                 <StackPanel Grid.Column="1" Grid.Row="1">
                     <Image Source="/assets/profil.png" Height="75"/>
-                    <Button x:Name="BtnModifier" Width="200">Modifier</Button>
+                    <Button x:Name="BtnModifier" Width="200" Click="BtnModifier_Click" >Modifier</Button>
                 </StackPanel>
 
                 <StackPanel x:Name="StackPanelProfilNom" Grid.Column="1" Grid.Row="2">

@@ -1,0 +1,60 @@
+﻿<Window x:Class="SAE_2._01_Interface.WindowChangerPhoto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SAE_2._01_Interface"
+        mc:Ignorable="d"
+        Title="WindowChangerPhoto" Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="10">
+            <TextBlock Text="Photo actuelle" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+            <Image x:Name="ImgPhotoProfil" Width="80" Height="80" Source="/assets/profil.png"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="10">
+            <WrapPanel x:Name="WrapPanelPhotos" HorizontalAlignment="Center">
+
+                <Border BorderThickness="1" BorderBrush="Black" Margin="5">
+                    <Image Source="/assets/avatar_1.png" Width="70" Height="70"/>
+                </Border>
+
+                <Border BorderThickness="1" BorderBrush="Black" Margin="5">
+                    <Image Source="/assets/avatar_2.png" Width="70" Height="70"/>
+                </Border>
+
+                <Border BorderThickness="1" BorderBrush="Black" Margin="5">
+                    <Image Source="/assets/avatar_3.png" Width="70" Height="70"/>
+                </Border>
+
+                <Border BorderThickness="1" BorderBrush="Black" Margin="5">
+                    <Image Source="/assets/avatar_4.png" Width="70" Height="70"/>
+                </Border>
+
+                <Border BorderThickness="1" BorderBrush="Black" Margin="5">
+                    <Image Source="/assets/avatar_5.png" Width="70" Height="70"/>
+                </Border>
+
+                <Border BorderThickness="1" BorderBrush="Black" Margin="5">
+                    <Image Source="/assets/avatar_6.png" Width="70" Height="70"/>
+                </Border>
+
+            </WrapPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Row="3" Margin="10">
+            <Button Content="Annuler" HorizontalAlignment="Left" Click="BtnRetour_Click" Margin="10,14,0,0" Width="110"/>
+            <Button Content="Valider" HorizontalAlignment="Left" Click="BtnValider_Click" Margin="654,14,0,0" Width="110"/>
+        </Grid>
+
+    </Grid>
+</Window>
