@@ -111,7 +111,6 @@ namespace SAE_2._01_Interface
 
             if (result == MessageBoxResult.Yes)
                 this.Close();
-            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
