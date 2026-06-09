@@ -22,10 +22,34 @@ namespace SAE_2._01_Interface
             InitializeComponent();
         }
 
+        private string _mode;
+        private void BtnMode_Click(object sender, RoutedEventArgs e)
+        {
+            _mode = (string)((Button)sender).Tag;
+        }
+
+        private int _nbLignes;
+        private int _nbColonnes;
+        private void BtnGrille_Click(object sender, RoutedEventArgs e)
+        {
+            string tag = (string)((Button)sender).Tag;
+            string[] parts = tag.Split(',');
+
+            _nbLignes = int.Parse(parts[0]);
+            _nbColonnes = int.Parse(parts[1]);
+        }
+
+        private string _adv;
+        private void BtnAdversaire_Click(object sender, RoutedEventArgs e)
+        {
+            _adv = (string)((Button)sender).Tag;
+        }
+
         private void btnLancer_Click(object sender, RoutedEventArgs e)
         {
-            var jeu = new WindowJeu();
+            var jeu = new WindowJeu(_nbLignes, _nbColonnes, _mode, _adv);
             jeu.ShowDialog();
         }
+
     }
 }

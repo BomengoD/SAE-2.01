@@ -19,9 +19,9 @@
                 <TextBlock Text="Type de partie" FontSize="20" FontWeight="SemiBold" Margin="0 0 0 10"/>
                 
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="btnPartieNormale" Content="Partie normale" Height="40" Margin="50,0,10,0" Width="127.903333333333"/>
-                    <Button x:Name="btnChrono" Content="Chronométrée" Height="40" Margin="100,0,0,0" Width="127.903333333333"/>
-                    <Button x:Name="btnChallenge" Content="Challenge (3 difficultés)" Height="40" Margin="100,0,0,0"/>
+                    <Button x:Name="btnPartieNormale" Content="Partie normale" Tag="Normal" Click="BtnMode_Click" Height="40" Margin="50,0,10,0" Width="128"/>
+                    <Button x:Name="btnChrono" Content="Chronométrée" Tag="Chronometre" Click="BtnMode_Click" Height="40" Margin="100,0,0,0" Width="128"/>
+                    <Button x:Name="btnChallenge" Content="Challenge (3 d'affilés)" Tag="Challenge" Click="BtnMode_Click" Height="40" Margin="100,0,0,0" Width="128"/>
                 </StackPanel>
             </StackPanel>
 
@@ -29,10 +29,10 @@
                 <TextBlock Text="Taille de la grille" FontSize="20" FontWeight="SemiBold" Margin="0 0 0 10"/>
 
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="btn5x4" Content="5 x 4" Height="40" Margin="30,0,10,0" Width="40"/>
-                    <Button x:Name="btn7x6" Content="7 x 6" Height="40" Margin="35,0,10,0" Width="40"/>
-                    <Button x:Name="btn9x8" Content="9 x 8" Height="40" Margin="35,0,10,0" Width="40"/>
-                    <Button x:Name="btn11x10" Content="11 x 10" Height="40" Width="42" Margin="35,0,0,0"/>
+                    <Button x:Name="btn4x5" Content="4 x 5" Tag="4,5" Height="40" Width="40" Margin="30,0,10,0" Click="BtnGrille_Click"/>
+                    <Button x:Name="btn6x7" Content="6 x 7" Tag="6,7" Height="40" Width="40" Margin="35,0,10,0" Click="BtnGrille_Click"/>
+                    <Button x:Name="btn8x9" Content="8 x 9" Tag="8,9" Height="40" Width="40" Margin="35,0,10,0" Click="BtnGrille_Click"/>
+                    <Button x:Name="btn10x11" Content="10 x 11" Tag="10,11" Height="40" Width="42" Margin="35,0,0,0" Click="BtnGrille_Click"/>
                 </StackPanel>
             </StackPanel>
 
@@ -48,8 +48,8 @@
            
             <StackPanel Margin="0 0 0 25">
                 <TextBlock Text="Adversaire" FontSize="20" FontWeight="SemiBold" Margin="0 0 0 10"/>
-                <Button x:Name="btnInvite" Content="Jouer contre l’invité" Height="40" Margin="0 0 0 10"/>
-                <Button x:Name="btnIA" Content="Jouer contre l’IA" Height="40"/>
+                <Button x:Name="btnInvite" Content="Jouer contre l’invité" Tag="Invite" Click="BtnAdversaire_Click" Height="40" Margin="0 0 0 10"/>
+                <Button x:Name="btnIA" Content="Jouer contre l’IA" Tag="IA" Height="40"/>
             </StackPanel>
 
             <StackPanel Margin="0 20 0 0">

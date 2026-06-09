@@ -31,10 +31,10 @@ namespace SAE_2._01_Interface
         private bool _partieEnCours;
         private bool _tourJoueur;
 
-        public WindowJeu()
+        public WindowJeu(int nbLignes, int nbColonnes, string mode, string adv)
         {
             InitializeComponent();
-            MettreAJourLabelJetons();
+            ActualiserPartie(nbLignes, nbColonnes);
         }
 
         private int CalculerNbJetons(int lignes, int colonnes)
@@ -42,34 +42,16 @@ namespace SAE_2._01_Interface
             return Math.Min(lignes, colonnes) / 2 + 1;
         }
 
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (LabelLignes == null || LabelColonnes == null || LabelJetons == null)
-                return;
-
-            MettreAJourLabelJetons();
-        }
-
-        private void MettreAJourLabelJetons()
-        {
-            int lignes = (int)SliderLignes.Value;
-            int colonnes = (int)SliderColonnes.Value;
-            int jetons = CalculerNbJetons(lignes, colonnes);
-
-            LabelLignes.Text = lignes.ToString();
-            LabelColonnes.Text = colonnes.ToString();
-            LabelJetons.Text = jetons.ToString();
-        }
-
         private int CalculerProfondeur(int jetons)
         {
             return Math.Clamp(12 - jetons, 4, 10);
         }
 
-        private void NouvellePartie()
+        
+        private void ActualiserPartie(int nbLignes, int nbColonnes)
         {
-            _nbLignes = (int)SliderLignes.Value;
-            _nbColonnes = (int)SliderColonnes.Value;
+            _nbLignes = nbLignes;
+            _nbColonnes = nbColonnes;
             _nbJetons = CalculerNbJetons(_nbLignes, _nbColonnes);
             _profondeur = CalculerProfondeur(_nbJetons);
 
@@ -97,6 +79,7 @@ namespace SAE_2._01_Interface
                 }
             }
         }
+        
 
         private void Cercle_Click(object sender, MouseButtonEventArgs e)
         {
@@ -164,11 +147,6 @@ namespace SAE_2._01_Interface
                     LabelStatut.Foreground = Brushes.Orange;
                 }
             }
-        }
-
-        private void BoutonNouveau_Click(object sender, RoutedEventArgs e)
-        {
-            NouvellePartie();
         }
     }
 }
