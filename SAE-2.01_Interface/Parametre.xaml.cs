@@ -18,11 +18,7 @@ namespace SAE_2._01_Interface
 
         private void BtnValider_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(
-                "Les paramètres ont été sauvegardés.",
-                "Validation",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information);
+            MessageBox.Show("Les paramètres ont été sauvegardés.", "Validation", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void BtnReset_Click(object sender, RoutedEventArgs e)
@@ -123,6 +119,12 @@ namespace SAE_2._01_Interface
                 home.Show();
                 this.Close();
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow home = new MainWindow();
+            home.Show();
         }
     }
 }

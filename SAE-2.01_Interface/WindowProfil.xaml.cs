@@ -40,8 +40,6 @@ namespace SAE_2._01_Interface
                 TxbConnexion.Visibility = Visibility.Collapsed;
 
                 BtnReinitialiser.Visibility = Visibility.Collapsed;
-                BtnSuccès.Visibility = Visibility.Visible;
-
             }
             else if(StackPanelMDP.Visibility == Visibility.Collapsed)
             {
@@ -172,8 +170,9 @@ namespace SAE_2._01_Interface
                         MessageBox.Show($"Erreur lors de l'inscription : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-                MainWindow menu = new MainWindow();
-                menu.Show();
+                ActualiserAffichage();
+                WindowConsulterProfil profil = new WindowConsulterProfil();
+                profil.Show();
                 this.Close();
             }
         }
@@ -188,20 +187,10 @@ namespace SAE_2._01_Interface
             TxbErreurMDPConfirm.Text = "";
         }
         
-        private void BtnDeconnexion_Click(object sender, RoutedEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var app = (App)Application.Current;
-
-            app.GestionJoueur?.SeDeconnecter();
-
-            ActualiserAffichage();
-            this.Close();
-        }
-
-
-        private void BtnSuccès_Click(object sender, RoutedEventArgs e)
-        {
-
+            MainWindow home = new MainWindow();
+            home.Show();
         }
 
         private void BtnModifier_Click(object sender, RoutedEventArgs e)
