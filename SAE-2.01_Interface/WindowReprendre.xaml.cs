@@ -21,5 +21,17 @@ namespace SAE_2._01_Interface
         {
             InitializeComponent();
         }
+
+        private void NouvellePartie_Click(object sender, RoutedEventArgs e)
+        {
+            var config = new WindowConfPartie();
+            config.Show();
+            this.Close();
+        }
+
+        private void ReprendrePartie_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

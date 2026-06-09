@@ -266,8 +266,17 @@ namespace SAE_2._01_Interface
         private void BtnTerminer_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            var jeu = new WindowJeu();
-            jeu.ShowDialog();
+            var joueurco = ((App)Application.Current).GestionJoueur?.JoueurCo;
+            if (joueurco != null)
+            {
+                var reprendre = new WindowReprendre();
+                reprendre.ShowDialog();
+            }
+            else
+            {
+                var jeu = new WindowJeu();
+                jeu.ShowDialog();
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

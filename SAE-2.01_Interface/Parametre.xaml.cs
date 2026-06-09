@@ -107,11 +107,7 @@ namespace SAE_2._01_Interface
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show(
-                "Retourner au menu ?",
-                "Confirmation",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Retourner au menu ?","Confirmation",MessageBoxButton.YesNo,MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {

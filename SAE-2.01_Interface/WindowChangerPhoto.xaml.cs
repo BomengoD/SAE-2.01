@@ -23,8 +23,6 @@ namespace SAE_2._01_Interface
 
         private void BtnRetour_Click(object sender, RoutedEventArgs e)
         {
-            WindowConsulterProfil profil = new WindowConsulterProfil();
-            profil.Show();
             this.Close();
         }
 
