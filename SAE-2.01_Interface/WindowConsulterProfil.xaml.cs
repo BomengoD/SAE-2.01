@@ -24,10 +24,6 @@ namespace SAE_2._01_Interface
 
         private bool editionNom = false;
 
-        private void ActualiserAffichage()
-        {
-
-        }
 
         private void BtnModifierNom_Click(object sender, RoutedEventArgs e)
         {

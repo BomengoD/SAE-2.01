@@ -177,8 +177,6 @@ namespace SAE_2._01_Interface
 
             if (result == MessageBoxResult.Yes)
             {
-                MainWindow home = new MainWindow();
-                home.Show();
                 this.Close();
             }
         }
