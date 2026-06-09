@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAE_2._01_Interface"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="WindowProfil" Height="450" Width="800">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -24,8 +25,8 @@
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-
                 <TextBlock x:Name="TxtProfilTitre" Grid.ColumnSpan="3" FontSize="20"><Run Language="fr-fr" Text=" Créer votre profil"/></TextBlock>
+                <Button Content="🏠" Width="64" Height="46" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="23,20,0,0" Click="BtnHome_Click" Background="Transparent" BorderBrush="Transparent" FontSize="30" RenderTransformOrigin="-0.657,0.299"/>
 
                 <StackPanel Grid.Column="1" Grid.Row="1">
                     <Image Source="/assets/profil.png" Height="75"/>

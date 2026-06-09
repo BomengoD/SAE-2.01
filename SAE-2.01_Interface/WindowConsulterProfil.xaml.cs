@@ -24,10 +24,6 @@ namespace SAE_2._01_Interface
 
         private bool editionNom = false;
 
-        private void ActualiserAffichage()
-        {
-
-        }
 
         private void BtnModifierNom_Click(object sender, RoutedEventArgs e)
         {
@@ -36,16 +32,17 @@ namespace SAE_2._01_Interface
         }
 
 
-        private void BtnDeconnexion_Click(object sender, RoutedEventArgs e)
+        private void Deconnexion_Click(object sender, RoutedEventArgs e)
         {
             var app = (App)Application.Current;
 
             app.GestionJoueur?.SeDeconnecter();
-
+            MainWindow home = new MainWindow();
+            home.Show();
             this.Close();
         }
 
-        private void Home_Click(object sender, RoutedEventArgs e)
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
             MainWindow home = new MainWindow();
             home.Show();
@@ -55,8 +52,7 @@ namespace SAE_2._01_Interface
         private void BtnModifier_Click(object sender, RoutedEventArgs e)
         {
             WindowChangerPhoto changerPhoto = new WindowChangerPhoto();
-            changerPhoto.Show();
-            this.Close();
+            changerPhoto.ShowDialog();
         }
 
     }

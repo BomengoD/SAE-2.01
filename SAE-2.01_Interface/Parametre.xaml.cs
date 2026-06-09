@@ -128,9 +128,6 @@ namespace SAE_2._01_Interface
             MessageBoxResult result = MessageBox.Show("Retourner au menu ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
-            {
-                MainWindow home = new MainWindow();
-                home.Show();
                 this.Close();
             }
         }
