@@ -23,6 +23,7 @@ namespace SAE_2._01_Interface
         private int _nbJetons;
         private int _profondeur;
         private string _difficulte;
+        private string _adversaire;
         private const int JOUEUR1 = 1;
         private const int JOUEUR2 = 2;
 
@@ -35,6 +36,7 @@ namespace SAE_2._01_Interface
         public WindowJeu(int nbLignes, int nbColonnes, int nbJetons, string mode, string adv)
         {
             InitializeComponent();
+            _adversaire = (adv == "Invite") ? "Invite" : "IA";
             _difficulte = adv;
             ActualiserPartie(nbLignes, nbColonnes, nbJetons);
         }
@@ -45,10 +47,10 @@ namespace SAE_2._01_Interface
             {
                 "Moyen" => 2,
                 "Difficile" => Math.Clamp(12 - jetons, 4, 10),
-                _ => 0  // Facile : profondeur non utilisée
+                _ => 0
             };
         }
-        
+
         private void ActualiserPartie(int nbLignes, int nbColonnes, int nbJetons)
         {
             _nbLignes = nbLignes;
@@ -81,57 +83,74 @@ namespace SAE_2._01_Interface
                 }
             }
         }
-        
+
 
         private void Cercle_Click(object sender, MouseButtonEventArgs e)
         {
-            if (!_partieEnCours || !_tourJoueur)
+            if (!_partieEnCours)
                 return;
+
+            if (_adversaire == "IA" && !_tourJoueur)
+                return;
+
 
             int col = (int)((Ellipse)sender).Tag;
 
             if (!Jeu.ColonneJouable(_grille, col))
                 return;
 
-            JouerEtAfficher(col, JOUEUR1);
-
-            if (!_partieEnCours)
-                return;
-
-            _tourJoueur = false;
-            LabelStatut.Text = "L'IA réfléchit…";
-            LabelStatut.Foreground = Brushes.Yellow;
-
-            Dispatcher.InvokeAsync(() =>
+            if (_adversaire == "Invite")
             {
-                int colIA;
-
-                if (_difficulte == "Facile")
-                {
-                    // Coup aléatoire parmi les colonnes jouables
-                    var colonnesJouables = new List<int>();
-                    for (int c = 0; c < _nbColonnes; c++)
-                        if (Jeu.ColonneJouable(_grille, c))
-                            colonnesJouables.Add(c);
-
-                    colIA = colonnesJouables[new Random().Next(colonnesJouables.Count)];
-                }
-                else
-                {
-                    colIA = AlphaBetaClass.ChoisirCoupAlphaBeta(
-                        _grille, _nbColonnes, _nbLignes, _nbJetons,
-                        _profondeur, JOUEUR2, JOUEUR1, _table, _ordre);
-                }
-
-                JouerEtAfficher(colIA, JOUEUR2);
+                int joueurActuel = _tourJoueur ? JOUEUR1 : JOUEUR2;
+                JouerEtAfficher(col, joueurActuel);
 
                 if (_partieEnCours)
                 {
-                    _tourJoueur = true;
-                    LabelStatut.Text = $"Grille {_nbLignes}×{_nbColonnes} — {_nbJetons} jetons à aligner — À vous de jouer !";
-                    LabelStatut.Foreground = Brushes.White;
+                    _tourJoueur = !_tourJoueur;
+                    string joueurSuivant = _tourJoueur ? "Joueur 1" : "Joueur 2";
+                    LabelStatut.Text = $"Tour du {joueurSuivant}";
+                    LabelStatut.Foreground = _tourJoueur ? Brushes.White : Brushes.Cyan;
                 }
-            }, System.Windows.Threading.DispatcherPriority.Background);
+            }
+            else
+            {
+                JouerEtAfficher(col, JOUEUR1);
+
+                if (!_partieEnCours)
+                    return;
+
+                _tourJoueur = false;
+                LabelStatut.Text = "L'IA réfléchit…";
+                LabelStatut.Foreground = Brushes.Yellow;
+
+                Dispatcher.InvokeAsync(() =>
+                {
+                    int colIA;
+
+                    if (_difficulte == "Facile")
+                    {
+                        var colonnesJouables = new List<int>();
+                        for (int c = 0; c < _nbColonnes; c++)
+                            if (Jeu.ColonneJouable(_grille, c))
+                                colonnesJouables.Add(c);
+
+                        colIA = colonnesJouables[new Random().Next(colonnesJouables.Count)];
+                    }
+                    else
+                    {
+                        colIA = AlphaBetaClass.ChoisirCoupAlphaBeta(_grille, _nbColonnes, _nbLignes, _nbJetons, _profondeur, JOUEUR2, JOUEUR1, _table, _ordre);
+                    }
+
+                    JouerEtAfficher(colIA, JOUEUR2);
+
+                    if (_partieEnCours)
+                    {
+                        _tourJoueur = true;
+                        LabelStatut.Text = $"Grille {_nbLignes}×{_nbColonnes} — {_nbJetons} jetons à aligner — À vous de jouer !";
+                        LabelStatut.Foreground = Brushes.White;
+                    }
+                }, System.Windows.Threading.DispatcherPriority.Background);
+            }
         }
 
         private void JouerEtAfficher(int col, int joueur)
