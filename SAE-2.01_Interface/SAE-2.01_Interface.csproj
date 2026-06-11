@@ -1,68 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows</TargetFramework>
-    <RootNamespace>SAE_2._01_Interface</RootNamespace>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<RootNamespace>SAE_2._01_Interface</RootNamespace>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="assets\avatar_1.png" />
-    <None Remove="assets\avatar_2.png" />
-    <None Remove="assets\avatar_3.png" />
-    <None Remove="assets\avatar_4.png" />
-    <None Remove="assets\avatar_5.png" />
-    <None Remove="assets\avatar_6.png" />
-    <None Remove="assets\parametre.png" />
-    <None Remove="assets\profil.png" />
-    <None Remove="assets\puissance4.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="assets\avatar_1.png" />
+		<None Remove="assets\avatar_2.png" />
+		<None Remove="assets\avatar_3.png" />
+		<None Remove="assets\avatar_4.png" />
+		<None Remove="assets\avatar_5.png" />
+		<None Remove="assets\avatar_6.png" />
+		<None Remove="assets\parametre.png" />
+		<None Remove="assets\profil.png" />
+		<None Remove="assets\puissance4.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="assets\avatar_2.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="assets\avatar_1.png" />
+		<Resource Include="assets\avatar_2.png" />
+		<Resource Include="assets\avatar_3.png" />
+		<Resource Include="assets\avatar_4.png" />
+		<Resource Include="assets\avatar_5.png" />
+		<Resource Include="assets\avatar_6.png" />
+		<Resource Include="assets\parametre.png" />
+		<Resource Include="assets\profil.png" />
+		<Resource Include="assets\puissance4.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Librairie_Accès_BD\Librairie_Accès_BD.csproj" />
-    <ProjectReference Include="..\Librairie_Système\Librairie_Système.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="assets\avatar_1.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="assets\avatar_3.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="assets\avatar_4.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="assets\avatar_5.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="assets\avatar_6.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="assets\parametre.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="assets\profil.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="assets\puissance4.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="WindowChangerPhoto.xaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Librairie_Accès_BD\Librairie_Accès_BD.csproj" />
+		<ProjectReference Include="..\Librairie_Système\Librairie_Système.csproj" />
+	</ItemGroup>
 
 </Project>
