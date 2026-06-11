@@ -55,5 +55,13 @@ namespace SAE_2._01_Interface
             changerPhoto.ShowDialog();
         }
 
+        private void BtnSucces_Click(object sender, RoutedEventArgs e)
+        {
+            ConsulterSucces fenetre = new ConsulterSucces(); 
+            fenetre.Show();
+            this.Close();
+
+        }
+
     }
 }

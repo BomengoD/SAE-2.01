@@ -60,24 +60,8 @@
         </StackPanel>
 
 
-        <Expander Header="Consulter les succès" Grid.Column="1" Grid.Row="4">
-            <ScrollViewer Height="120" Margin="0,0,0,-71">
-                <StackPanel>
-                    <CheckBox Content="Première connexion" IsChecked="True" IsEnabled="True"/>
-                    <TextBlock Text="Créer un profil lors de votre première connexion." Margin="20,0,0,0"/>
-                    <CheckBox Content="Première victoire" IsChecked="False" IsEnabled="True"/>
-                    <TextBlock Text="Remporter votre première partie." Margin="20,0,0,0"/>
-                    <CheckBox Content="Première défaite" IsChecked="False" IsEnabled="True"/>
-                    <TextBlock Text="Perdre votre première partie." Margin="20,0,0,0"/>
-                    <CheckBox Content="10 victoires" IsChecked="False" IsEnabled="True"/>
-                    <TextBlock Text="Remporter 10 parties." Margin="20,0,0,0"/>
-                    <CheckBox Content="10 défaites" IsChecked="False" IsEnabled="True"/>
-                    <TextBlock Text="Perdre 10 parties." Margin="20,0,0,0"/>
-                    <CheckBox Content="Victoire contre l'IA facile" IsChecked="False" IsEnabled="True"/>
-                    <TextBlock Text="Vaincre l’IA en difficulté facile." Margin="20,0,0,0"/>
-                </StackPanel>
-            </ScrollViewer>
-        </Expander>
+        <Button Content="Consulter les succès" Click="BtnSucces_Click" Width="120" Height="25" Grid.Row="4" Grid.Column="1"/>
+
         <TextBlock x:Name="TxbConnexion" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center">
             <Run Text="Se déconnecter ?" />
             <Hyperlink Click="Deconnexion_Click">Déconnexion</Hyperlink>
