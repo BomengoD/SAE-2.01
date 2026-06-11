@@ -10,9 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\avatar_1.png" />
+    <None Remove="assets\avatar_2.png" />
+    <None Remove="assets\avatar_3.png" />
+    <None Remove="assets\avatar_4.png" />
+    <None Remove="assets\avatar_5.png" />
+    <None Remove="assets\avatar_6.png" />
     <None Remove="assets\parametre.png" />
     <None Remove="assets\profil.png" />
     <None Remove="assets\puissance4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\avatar_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +33,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="assets\avatar_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\avatar_3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\avatar_4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\avatar_5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\avatar_6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="assets\parametre.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
