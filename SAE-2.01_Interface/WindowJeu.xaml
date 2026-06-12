@@ -15,12 +15,50 @@
         <Grid Grid.Row="1" Background="#0f3460">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Name="LabelStatut" Grid.Row="0" Text="Configurez la partie puis cliquez sur Nouvelle partie." FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,10" Foreground="White"/>
+            <TextBlock Name="LabelStatut" Grid.Row="0" Text="Configurez la partie puis cliquez sur Nouvelle partie." FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,6" Foreground="White"/>
 
-            <Border Name="BorderGrille" Grid.Row="1" Margin="20,0,20,20" CornerRadius="8" Padding="8">
+            <Grid x:Name="GridChallenge" Grid.Row="1" Visibility="Collapsed" Margin="20,0,20,6" Background="#1a1a2e">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock x:Name="LabelNomJ1" Text="Joueur 1" Foreground="#FF6B6B" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Margin="0,6,8,6"/>
+                    <TextBlock x:Name="LabelScoreJ1" Text="0" Foreground="White" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,4,20,4">
+                    <TextBlock x:Name="LabelManche" Text="Manche 1 / 3" Foreground="#aaa" FontSize="12" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,3,0,0">
+                        <Ellipse x:Name="DotManche1" Width="12" Height="12" Fill="#555" Margin="3,0"/>
+                        <Ellipse x:Name="DotManche2" Width="12" Height="12" Fill="#555" Margin="3,0"/>
+                        <Ellipse x:Name="DotManche3" Width="12" Height="12" Fill="#555" Margin="3,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock x:Name="LabelScoreJ2" Text="0" Foreground="White" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="LabelNomJ2" Text="Joueur 2" Foreground="#FFD93D" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Margin="8,6,0,6"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="GridChrono" Grid.Row="2" Visibility="Collapsed" Margin="20,0,20,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ProgressBar x:Name="ProgressChrono" Grid.Column="0" Height="18" Minimum="0" VerticalAlignment="Center" Foreground="#4CAF50" Background="#1a1a2e" BorderBrush="#333"/>
+                <TextBlock x:Name="LabelChrono" Grid.Column="1" Foreground="White" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center" Text="--"/>
+            </Grid>
+
+            <Border Name="BorderGrille" Grid.Row="3" Margin="20,0,20,20" CornerRadius="8" Padding="8">
                 <UniformGrid Name="Grille" Background="Transparent"/>
             </Border>
         </Grid>
