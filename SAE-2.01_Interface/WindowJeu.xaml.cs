@@ -64,10 +64,10 @@ namespace SAE_2._01_Interface
 
         private int CalculerProfondeur(int jetons) => _difficulte switch
         {
-                "Moyen" => 2,
-                "Difficile" => Math.Clamp(12 - jetons, 4, 10),
-                _ => 0
-            };
+            "Moyen" => 2,
+            "Difficile" => Math.Clamp(12 - jetons, 4, 10),
+            _ => 0
+        };
 
         private void ActualiserPartie(int nbLignes, int nbColonnes, int nbJetons)
         {
@@ -126,7 +126,7 @@ namespace SAE_2._01_Interface
                     cercle.MouseLeftButtonDown += Cercle_Click;
                     Grille.Children.Add(cercle);
                 }
-            }
+        }
 
         private void InitialiserBandeauChallenge()
         {
@@ -243,11 +243,11 @@ namespace SAE_2._01_Interface
         {
             if (!_partieEnCours)
                 return;
-            if (_adversaire == "IA" && !_tourJoueur)
+            if (_adversaire == "IA" && !_tourJoueur) 
                 return;
 
             int col = (int)((Ellipse)sender).Tag;
-            if (!Jeu.ColonneJouable(_grille, col))
+            if (!Jeu.ColonneJouable(_grille, col)) 
                 return;
 
             if (_mode == "Chronometre") 
@@ -276,42 +276,42 @@ namespace SAE_2._01_Interface
 
         private void FaireJouerIA()
         {
-                _tourJoueur = false;
-                LabelStatut.Text = "L'IA réfléchit…";
-                LabelStatut.Foreground = Brushes.Yellow;
+            _tourJoueur = false;
+            LabelStatut.Text = "L'IA réfléchit…";
+            LabelStatut.Foreground = Brushes.Yellow;
 
-                Dispatcher.InvokeAsync(() =>
+            Dispatcher.InvokeAsync(() =>
+            {
+                int colIA;
+
+                if (_difficulte == "Facile")
                 {
-                    int colIA;
-
-                    if (_difficulte == "Facile")
-                    {
                     var jouables = new List<int>();
-                        for (int c = 0; c < _nbColonnes; c++)
-                            if (Jeu.ColonneJouable(_grille, c))
+                    for (int c = 0; c < _nbColonnes; c++)
+                        if (Jeu.ColonneJouable(_grille, c)) 
                             jouables.Add(c);
                     colIA = jouables[new Random().Next(jouables.Count)];
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     colIA = AlphaBetaClass.ChoisirCoupAlphaBeta( _grille, _nbColonnes, _nbLignes, _nbJetons, _profondeur, JOUEUR2, JOUEUR1, _table, _ordre);
-                    }
+                }
 
-                    JouerEtAfficher(colIA, JOUEUR2);
+                JouerEtAfficher(colIA, JOUEUR2);
 
-                    if (_partieEnCours)
-                    {
-                        _tourJoueur = true;
+                if (_partieEnCours)
+                {
+                    _tourJoueur = true;
                     AfficherStatutTour();
                     if (_mode == "Chronometre") DemarrerChrono();
-                    }
+                }
             }, DispatcherPriority.Background);
-            }
+        }
 
         private void JouerEtAfficher(int col, int joueur)
         {
             int ligne = Jeu.JouerCoup(_grille, _nbLignes, col, joueur);
-            if (ligne == -1)
+            if (ligne == -1) 
                 return;
 
             int index = ligne * _nbColonnes + col;
@@ -320,7 +320,7 @@ namespace SAE_2._01_Interface
             if (!IA.PartieTerminee(_grille, _nbColonnes, _nbLignes, _nbJetons, JOUEUR2, JOUEUR1, _table))
                 return;
 
-                _partieEnCours = false;
+            _partieEnCours = false;
             _timer.Stop();
 
             int vainqueur = DeterminerVainqueur();
@@ -334,7 +334,7 @@ namespace SAE_2._01_Interface
         private int DeterminerVainqueur()
         {
             int score = Heuristique.Parcours(_grille, _nbColonnes, _nbLignes, _nbJetons, JOUEUR2, JOUEUR1, _table);
-                if (score >= 100000)
+            if (score >= 100000) 
                 return JOUEUR2;
             if (score <= -100000) 
                 return JOUEUR1;
@@ -342,7 +342,7 @@ namespace SAE_2._01_Interface
         }
 
         private void AfficherFinPartie(int vainqueur)
-                {
+        {
             if (_adversaire == "Invite")
             {
                 if (vainqueur == JOUEUR1)
@@ -350,11 +350,11 @@ namespace SAE_2._01_Interface
                     LabelStatut.Text = "Le Joueur 1 a gagné ! 🎉"; LabelStatut.Foreground = Brushes.White; 
                 }
                 else if (vainqueur == JOUEUR2)
-                {
+                { 
                     LabelStatut.Text = "Le Joueur 2 a gagné ! 🎉"; LabelStatut.Foreground = Brushes.Cyan; 
                 }
                 else
-                {
+                { 
                     LabelStatut.Text = "Match nul !"; LabelStatut.Foreground = Brushes.Orange; 
                 }
             }
@@ -398,8 +398,8 @@ namespace SAE_2._01_Interface
             {
                 MarquerDotManche(_mancheActuelle, Brushes.Orange);
                 LabelStatut.Text = $"Manche {_mancheActuelle} : Nul ! Prochaine manche dans 3s…";
-                    LabelStatut.Foreground = Brushes.Orange;
-                }
+                LabelStatut.Foreground = Brushes.Orange;
+            }
 
             LabelScoreJ1.Text = _scoreJ1.ToString();
             LabelScoreJ2.Text = _scoreJ2.ToString();
