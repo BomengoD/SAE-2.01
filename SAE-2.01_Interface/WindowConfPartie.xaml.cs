@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace SAE_2._01_Interface
 {
-    /// <summary>
-    /// Logique d'interaction pour Window1.xaml
-    /// </summary>
     public partial class WindowConfPartie : Window
     {
         public WindowConfPartie()

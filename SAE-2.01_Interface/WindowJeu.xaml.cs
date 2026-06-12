@@ -13,9 +13,6 @@ using System.Windows.Shapes;
 
 namespace SAE_2._01_Interface
 {
-    /// <summary>
-    /// Logique d'interaction pour WindowJeu.xaml
-    /// </summary>
     public partial class WindowJeu : Window
     {
         private int _nbLignes;

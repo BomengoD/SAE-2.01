@@ -13,9 +13,7 @@ using Librairie_Système;
 
 namespace SAE_2._01_Interface
 {
-    /// <summary>
-    /// Logique d'interaction pour WindowProfil.xaml
-    /// </summary>
+
     public partial class WindowProfil : Window
     {
         public WindowProfil()

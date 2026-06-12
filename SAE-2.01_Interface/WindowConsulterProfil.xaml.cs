@@ -12,9 +12,7 @@ using System.Windows.Shapes;
 
 namespace SAE_2._01_Interface
 {
-    /// <summary>
-    /// Logique d'interaction pour WindowConsulterProfil.xaml
-    /// </summary>
+
     public partial class WindowConsulterProfil : Window
     {
         public WindowConsulterProfil()

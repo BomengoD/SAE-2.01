@@ -12,20 +12,17 @@ using System.Windows.Shapes;
 
 namespace SAE_2._01_Interface
 {
-    /// <summary>
-    /// Logique d'interaction pour WindowTutoriel.xaml
-    /// </summary>
     public partial class WindowTutoriel : Window
     {
         private const int NbLignes = 6;
         private const int NbColonnes = 7;
         private const double TailleCase = 46;
         private const double TailleJeton = 38;
-        private static readonly SolidColorBrush BrVide = Geler(80, 255, 255, 255); // blanc translucide
+        private static readonly SolidColorBrush BrVide = Geler(80, 255, 255, 255);
         private static readonly SolidColorBrush BrRouge = Geler(255, 231, 76, 60);
         private static readonly SolidColorBrush BrJaune = Geler(255, 241, 196, 15);
-        private static readonly SolidColorBrush BrActif = Geler(255, 41, 128, 185); // dot actif (bleu)
-        private static readonly SolidColorBrush BrInactif = Geler(255, 200, 200, 200); // dot inactif (gris)
+        private static readonly SolidColorBrush BrActif = Geler(255, 41, 128, 185);
+        private static readonly SolidColorBrush BrInactif = Geler(255, 200, 200, 200);
 
         private List<EtapeTutoriel> _etapes = null!;
         private int _index;
@@ -93,7 +90,7 @@ namespace SAE_2._01_Interface
                         { 0, 0, 0, 0, 0, 0, 0 },
                         { 0, 0, 0, 0, 0, 0, 0 },
                         { 0, 0, 0, 0, 0, 0, 0 },
-                        { 0, 0, 0, 1, 0, 0, 0 }   // rouge en bas, colonne 4[3]
+                        { 0, 0, 0, 1, 0, 0, 0 }
                     },
                     Gagnantes:  aucune,
                     ColFleche:  3

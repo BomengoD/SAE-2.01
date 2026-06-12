@@ -12,9 +12,6 @@ using System.Windows.Shapes;
 
 namespace SAE_2._01_Interface
 {
-    /// <summary>
-    /// Logique d'interaction pour WindowReprendre.xaml
-    /// </summary>
     public partial class WindowReprendre : Window
     {
         public WindowReprendre()
